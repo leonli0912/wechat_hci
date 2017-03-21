@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta charset="UTF-8">
+
+<title>ELearning Cloud</title>
+<!-- <script type="text/javascript" src="src/datajs-1.1.2.min.js"></script> -->
+<!-- UI5 Bootstrap with OpenUI5 https://sapui5.hana.ondemand.com/resources/sap-ui-core.js -->
+<script id="sap-ui-bootstrap" type="text/javascript"
+	src="https://sapui5.hana.ondemand.com/resources/sap-ui-core.js"
+	data-sap-ui-theme="sap_bluecrystal"
+	data-sap-ui-xx-bindingSyntax="complex" data-sap-ui-libs="sap.m"
+	data-sap-ui-resourceroots='{
+            "elearning_ui5": "./"
+        }'>
+    </script>
+<script>
+        sap.ui.getCore().attachInit(function() {
+   		 new sap.ui.core.ComponentContainer({
+             name : "elearning_ui5"
+          }).placeAt("content");
+        });
+    </script>
+</head>
+<body class="sapUiBody" id="content">
+</body>
+</html>

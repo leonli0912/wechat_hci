@@ -1,0 +1,64 @@
+<core:View xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:u="sap.ui.unified"
+	controllerName="elearning_ui5.controller.Tile">
+	<u:Shell id="myShell" icon="{/logo}">
+		<u:headItems>
+			<u:ShellHeadItem tooltip="Configuration" icon="sap-icon://menu2"
+				press="handlePressConfiguration" />
+			<u:ShellHeadItem tooltip="Home" icon="sap-icon://home"
+				visible="false" press="handlePressHome" />
+		</u:headItems>
+		<u:headEndItems>
+			<u:ShellHeadItem icon="sap-icon://log" tooltip="Logoff"
+				press="handleLogoffPress" />
+		</u:headEndItems>
+		<u:user>
+			<u:ShellHeadUserItem image="sap-icon://person-placeholder"
+				username="Karl Mustermann" press="handleUserItemPressed" />
+		</u:user>
+		<!-- <u:search> <SearchField search="handleSearchPressed" /> </u:search> -->
+		<u:paneContent>
+			<Text text="Lorem ipsum" />
+		</u:paneContent>
+	</u:Shell>
+	<Page title="Welcome " enableScrolling="false" navButtonPress="onNavBackPressed"
+		id="id_HomePage">
+		<content>
+			<TileContainer xmlns="sap.m" id="tilecontainer_id"
+				width="100%" height="100%" editable="" allowAdd="" tileMove=""
+				tileDelete="" tileAdd="">
+
+				<tiles>
+					<!-- <StandardTile xmlns="sap.m" id="id3" removable="true" title="Register 
+						User(Admin)" info="Create a Change" icon="sap-icon://add" activeIcon="" number="" 
+						numberUnit="" infoState="None" type="None" iconDensityAware="true" press="onShowSplitScreen"> 
+						</StandardTile> -->
+					<StandardTile xmlns="sap.m" id="ida2" removable="true"
+						title="My Employees" info="Create/Edit/Review the project" icon="sap-icon://work-history"
+						activeIcon="" number="" numberUnit="" infoState="None" type="None"
+						iconDensityAware="true" press="onPressStock">
+					</StandardTile>
+
+					<StandardTile xmlns="sap.m" id="ida" removable="true"
+						title="Own Data" info="Review/submit a Change" icon="sap-icon://request"
+						activeIcon="" number="" numberUnit="" infoState="None" type="None"
+						iconDensityAware="true" press="onPressPersonal">
+					</StandardTile>
+
+					<StandardTile xmlns="sap.m" id="iEmpList" removable="true"
+						title="Emp List" info="Review/submit a Change" icon="sap-icon://request"
+						activeIcon="" number="" numberUnit="" infoState="None" type="None"
+						iconDensityAware="true" press="onPressSplitList">
+					</StandardTile>
+
+				</tiles>
+			</TileContainer>
+
+		</content>
+		<footer>
+			<Bar>
+				<contentRight>
+				</contentRight>
+			</Bar>
+		</footer>
+	</Page>
+</core:View>
