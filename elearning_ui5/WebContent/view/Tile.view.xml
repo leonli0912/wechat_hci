@@ -1,5 +1,5 @@
 <core:View xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:u="sap.ui.unified"
-	controllerName="elearning_ui5.controller.Tile">
+	xmlns:l="sap.ui.layout" controllerName="elearning_ui5.controller.Tile">
 	<u:Shell id="myShell" icon="{/logo}">
 		<u:headItems>
 			<u:ShellHeadItem tooltip="Configuration" icon="sap-icon://menu2"
@@ -23,63 +23,59 @@
 	<Page title="Welcome " enableScrolling="false" navButtonPress="onNavBackPressed"
 		id="id_HomePage">
 		<content>
-			<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
-				header="Courses" subheader="View My Course" frameType="OneByOne"
-				press="press">
-				<tileContent>
-					<TileContent footer="Course Finished">
-						<content>
-							<NumericContent value="15" icon="sap-icon://study-leave" />
-						</content>
-					</TileContent>
-				</tileContent>
-			</GenericTile>
-			<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
-				header="Ranking" subheader="View My Ranking" frameType="OneByOne"
-				press="press">
-				<tileContent>
-					<TileContent footer="position in ranking">
-						<content>
-							<NumericContent value="8" icon="sap-icon://competitor" />
-						</content>
-					</TileContent>
-				</tileContent>
-			</GenericTile>
-			<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
-				header="Points" subheader="View My Points" frameType="OneByOne"
-				press="press">
-				<tileContent>
-					<TileContent footer="Course Finished">
-						<content>
-							<NumericContent value="25" icon="sap-icon://leads" />
-						</content>
-					</TileContent>
-				</tileContent>
-			</GenericTile>
-
-			<!-- <TileContainer xmlns="sap.m" id="tilecontainer_id"
-				width="100%" height="100%" editable="" allowAdd="" tileMove=""
-				tileDelete="" tileAdd="">
-				<tiles>
-					<StandardTile xmlns="sap.m" id="ida2" removable="true"
-						title="Courses" info="View My Course" icon="sap-icon://study-leave"
-						activeIcon="" number="15" numberUnit="" infoState="Course Finished"
-						type="None" iconDensityAware="true" press="onPressStock">
-					</StandardTile>
-
-					<StandardTile xmlns="sap.m" id="ida" removable="true"
-						title="Ranking" info="View My Ranking" icon="sap-icon://competitor"
-						activeIcon="" number="8" numberUnit="" infoState="position in ranking"
-						type="None" iconDensityAware="true" press="onPressPersonal">
-					</StandardTile>
-
-					<StandardTile xmlns="sap.m" id="iEmpList" removable="true"
-						title="Points" info="View My Points" icon="sap-icon://leads"
-						activeIcon="" number="25" numberUnit="" infoState="points earned"
-						type="None" iconDensityAware="true" press="onPressSplitList">
-					</StandardTile>
-				</tiles>
-			</TileContainer> -->
+	<!-- <l:VerticalLayout width="100%"> <l:content> <Panel> <headerToolbar> 
+		<Toolbar> <Title level="H2" text="Upper left" /> </Toolbar> </headerToolbar> 
+		<FlexBox height="13rem" alignItems="Start" justifyContent="Start"> <items> 
+		</items> </FlexBox> </Panel> </l:content> </l:VerticalLayout> -->
+								<GenericTile
+									class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+									header="Courses" subheader="View My Course" frameType="OneByOne"
+									press="onPressCourse">
+									<tileContent>
+										<TileContent footer="Course Finished">
+											<content>
+												<NumericContent value="15"
+													icon="sap-icon://study-leave" />
+											</content>
+										</TileContent>
+									</tileContent>
+								</GenericTile>
+								<GenericTile
+									class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+									header="Ranking" subheader="View My Ranking" frameType="OneByOne"
+									press="press">
+									<tileContent>
+										<TileContent footer="position in ranking">
+											<content>
+												<NumericContent value="8" icon="sap-icon://competitor" />
+											</content>
+										</TileContent>
+									</tileContent>
+								</GenericTile>
+								<GenericTile
+									class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+									header="Points" subheader="View My Points" frameType="OneByOne"
+									press="press">
+									<tileContent>
+										<TileContent footer="Course Finished">
+											<content>
+												<NumericContent value="25" icon="sap-icon://leads" />
+											</content>
+										</TileContent>
+									</tileContent>
+								</GenericTile>
+			<!-- <TileContainer xmlns="sap.m" id="tilecontainer_id" width="100%" height="100%" 
+				editable="" allowAdd="" tileMove="" tileDelete="" tileAdd=""> <tiles> <StandardTile 
+				xmlns="sap.m" id="ida2" removable="true" title="Courses" info="View My Course" 
+				icon="sap-icon://study-leave" activeIcon="" number="15" numberUnit="" infoState="Course 
+				Finished" type="None" iconDensityAware="true" press="onPressStock"> </StandardTile> 
+				<StandardTile xmlns="sap.m" id="ida" removable="true" title="Ranking" info="View 
+				My Ranking" icon="sap-icon://competitor" activeIcon="" number="8" numberUnit="" 
+				infoState="position in ranking" type="None" iconDensityAware="true" press="onPressPersonal"> 
+				</StandardTile> <StandardTile xmlns="sap.m" id="iEmpList" removable="true" 
+				title="Points" info="View My Points" icon="sap-icon://leads" activeIcon="" 
+				number="25" numberUnit="" infoState="points earned" type="None" iconDensityAware="true" 
+				press="onPressSplitList"> </StandardTile> </tiles> </TileContainer> -->
 
 		</content>
 		<footer>

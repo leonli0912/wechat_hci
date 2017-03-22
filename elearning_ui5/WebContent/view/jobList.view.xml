@@ -1,0 +1,117 @@
+<mvc:View controllerName="elearning_ui5.controller.jobList"
+	xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:u="sap.ui.unified" xmlns="sap.m" xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:my="elearning_ui5.src.js">
+	<html:style>
+		.iconSizeSmall{
+		font-size:0.75rem;
+		}
+		.customSmallMarginLeft{
+		margin-left:3px;
+		}
+		.colorSetBlue{
+		color:#00679e;
+		}
+		.infoLabel{
+		/* color:#009de0; */
+		max-width:10rem;
+		}
+		.infoLabel{
+		font-size:0.75rem;
+		margin-top: 0.25rem;
+		}
+		.jobList{
+		padding-bottom:3rem;
+		}
+
+		.jobFilterIcon .sapMBtnIcon{
+		color:#666 !important;
+		}
+
+		.personalCenterIcon .sapMBtnIcon{
+		color:#666 !important;
+		}
+
+		.jobFacetFilter .sapMTB-Info-CTX.sapMTB{
+		background:#009de0;
+		}
+
+		.jobFacetFilter .sapMTB-Info-CTX .sapMText{
+		color: #f1f1f1;
+		font-size: 0.75rem;
+		}
+	</html:style>
+	<Page title="{wi18n>JOB_LIST_PAGE_TITLE}" showHeader="false">
+		<subHeader>
+			<Toolbar>
+				<Button icon="sap-icon://list" class="jobFilterIcon" type="Transparent"
+					press=".showFilterDialog" />
+				<SearchField search="showSearchResult" id="searchField" />
+			</Toolbar>
+		</subHeader>
+		<content>
+			<my:ExtendFacetFilter id="jobFacetFilter" type="Light"
+				showPersonalization="false" showPopoverOKButton="true"
+				showSummaryBar="false" showReset="false" reset="handleFacetFilterReset"
+				class="jobFacetFilter" lists="{/filters}">
+				<my:lists>
+					<FacetFilterList title="{path:'title', formatter:'.translatWechatLabel'}"
+						key="{type}" multiselect="true" listClose="handleListClose"
+						items="{path:'values',templateShareable:false}">
+						<items>
+							<FacetFilterItem
+								text="{path:'label',formatter:'.translatWechatLabel'}" key="{key}" />
+						</items>
+					</FacetFilterList>
+				</my:lists>
+			</my:ExtendFacetFilter>
+			<my:JSONList class="jobList" id="jobList"
+				noDataText="{wi18n>JOB_LIST_NO_DATA}" items="{
+						path: '/jobs'
+ 					}"
+				growing="true" growingScrollToLoad="false" growingThreshold="10"
+				totalCount="{/count}" enableBusyIndicator="true" updateStarted="listUploadStart">
+				<my:headerToolbar>
+					<Toolbar>
+						<Title text="{wi18n>JOB_LIST_TITLE}" level="H2" />
+						<ToolbarSpacer />
+					</Toolbar>
+				</my:headerToolbar>
+				<CustomListItem type="Navigation" press="press">
+					<content>
+						<VBox width="100%" height="5rem" class="sapUiSmallPaddingTop">
+							<FlexBox alignItems="Center" justifyContent="SpaceBetween"
+								class="sapUiSmallMarginTop">
+								<items>
+									<Label text="{jobTitle}" class="sapUiSmallMarginBegin colorSetBlue"
+										width="100%" design="Bold" />
+									<Label text="{seen}" class="sapUiLargeMarginEnd" width="100%" />
+								</items>
+							</FlexBox>
+							<FlexBox alignItems="Start" justifyContent="SpaceBetween"
+								class="sapUiTinyMarginTop">
+								<items>
+									<HBox justifyContent="Center" alignItems="Center">
+										<core:Icon src="sap-icon://map"
+											class="iconSizeSmall sapUiSmallMarginBegin " color="#009de0">
+										</core:Icon>
+										<Label text="{path:'location',formatter:'.translatEnumLabel'}"
+											class="customSmallMarginLeft infoLabel" width="100%" />
+									</HBox>
+									<HBox justifyContent="Center" alignItems="Center">
+										<core:Icon src="sap-icon://create-entry-time" class="iconSizeSmall sapUiSmallMarginBegin"
+											color="#009de0">
+										</core:Icon>
+										<Label text="{path:'createAt',formatter:'.dateFormat'}"
+											class="customSmallMarginLeft infoLabel" width="100%" />
+									</HBox>
+								</items>
+							</FlexBox>
+						</VBox>
+					</content>
+				</CustomListItem>
+
+			</my:JSONList>
+		</content>
+	</Page>
+</mvc:View>

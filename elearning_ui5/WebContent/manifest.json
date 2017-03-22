@@ -25,12 +25,21 @@
                     "pattern": "", 
                     "name": "appHome", 
                     "target": "home"
+                },
+                {
+                    "pattern": "jobList", 
+                    "name": "jobList", 
+                    "target": "jobList"
                 }
               
             ], 
             "targets": {
                 "home": {
                     "viewName": "Tile", 
+                    "viewLevel": 1
+                },
+                "jobList":{
+                    "viewName": "jobList", 
                     "viewLevel": 1
                 }
               

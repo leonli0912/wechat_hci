@@ -18,7 +18,13 @@ sap.ui.controller("elearning_ui5.controller.Tile", {
 	onAfterRendering : function() {
 
 	},
-
+	onPressCourse : function(evt) {
+		var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+		oRouter.navTo("jobList");
+	},
+	
+	
+	
 	onShowSplitScreen : function(evt) {
 		var oSource = evt.getSource();
 		var that = oSource.getParent().getParent().getParent();
@@ -40,10 +46,7 @@ sap.ui.controller("elearning_ui5.controller.Tile", {
 		var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
 		oRouter.navTo("person");
 	},
-	onPressStock : function(evt) {
-		var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-		oRouter.navTo("stock");
-	},
+
 	onPressSplitList : function(evt) {
 		var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
 		oRouter.navTo("splitapp");
