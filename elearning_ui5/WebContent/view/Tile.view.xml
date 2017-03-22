@@ -23,35 +23,63 @@
 	<Page title="Welcome " enableScrolling="false" navButtonPress="onNavBackPressed"
 		id="id_HomePage">
 		<content>
-			<TileContainer xmlns="sap.m" id="tilecontainer_id"
+			<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+				header="Courses" subheader="View My Course" frameType="OneByOne"
+				press="press">
+				<tileContent>
+					<TileContent footer="Course Finished">
+						<content>
+							<NumericContent value="15" icon="sap-icon://study-leave" />
+						</content>
+					</TileContent>
+				</tileContent>
+			</GenericTile>
+			<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+				header="Ranking" subheader="View My Ranking" frameType="OneByOne"
+				press="press">
+				<tileContent>
+					<TileContent footer="position in ranking">
+						<content>
+							<NumericContent value="8" icon="sap-icon://competitor" />
+						</content>
+					</TileContent>
+				</tileContent>
+			</GenericTile>
+			<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+				header="Points" subheader="View My Points" frameType="OneByOne"
+				press="press">
+				<tileContent>
+					<TileContent footer="Course Finished">
+						<content>
+							<NumericContent value="25" icon="sap-icon://leads" />
+						</content>
+					</TileContent>
+				</tileContent>
+			</GenericTile>
+
+			<!-- <TileContainer xmlns="sap.m" id="tilecontainer_id"
 				width="100%" height="100%" editable="" allowAdd="" tileMove=""
 				tileDelete="" tileAdd="">
-
 				<tiles>
-					<!-- <StandardTile xmlns="sap.m" id="id3" removable="true" title="Register 
-						User(Admin)" info="Create a Change" icon="sap-icon://add" activeIcon="" number="" 
-						numberUnit="" infoState="None" type="None" iconDensityAware="true" press="onShowSplitScreen"> 
-						</StandardTile> -->
 					<StandardTile xmlns="sap.m" id="ida2" removable="true"
-						title="My Employees" info="Create/Edit/Review the project" icon="sap-icon://work-history"
-						activeIcon="" number="" numberUnit="" infoState="None" type="None"
-						iconDensityAware="true" press="onPressStock">
+						title="Courses" info="View My Course" icon="sap-icon://study-leave"
+						activeIcon="" number="15" numberUnit="" infoState="Course Finished"
+						type="None" iconDensityAware="true" press="onPressStock">
 					</StandardTile>
 
 					<StandardTile xmlns="sap.m" id="ida" removable="true"
-						title="Own Data" info="Review/submit a Change" icon="sap-icon://request"
-						activeIcon="" number="" numberUnit="" infoState="None" type="None"
-						iconDensityAware="true" press="onPressPersonal">
+						title="Ranking" info="View My Ranking" icon="sap-icon://competitor"
+						activeIcon="" number="8" numberUnit="" infoState="position in ranking"
+						type="None" iconDensityAware="true" press="onPressPersonal">
 					</StandardTile>
 
 					<StandardTile xmlns="sap.m" id="iEmpList" removable="true"
-						title="Emp List" info="Review/submit a Change" icon="sap-icon://request"
-						activeIcon="" number="" numberUnit="" infoState="None" type="None"
-						iconDensityAware="true" press="onPressSplitList">
+						title="Points" info="View My Points" icon="sap-icon://leads"
+						activeIcon="" number="25" numberUnit="" infoState="points earned"
+						type="None" iconDensityAware="true" press="onPressSplitList">
 					</StandardTile>
-
 				</tiles>
-			</TileContainer>
+			</TileContainer> -->
 
 		</content>
 		<footer>
