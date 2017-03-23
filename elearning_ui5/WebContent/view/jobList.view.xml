@@ -67,7 +67,7 @@
 			</my:ExtendFacetFilter>
 			<my:JSONList class="jobList" id="jobList"
 				noDataText="{wi18n>JOB_LIST_NO_DATA}" items="{
-						path: '/jobs'
+						path: '/'
  					}"
 				growing="true" growingScrollToLoad="false" growingThreshold="10"
 				totalCount="{/count}" enableBusyIndicator="true" updateStarted="listUploadStart">
@@ -83,7 +83,7 @@
 							<FlexBox alignItems="Center" justifyContent="SpaceBetween"
 								class="sapUiSmallMarginTop">
 								<items>
-									<Label text="{jobTitle}" class="sapUiSmallMarginBegin colorSetBlue"
+									<Label text="{Name}" class="sapUiSmallMarginBegin colorSetBlue"
 										width="100%" design="Bold" />
 									<Label text="{seen}" class="sapUiLargeMarginEnd" width="100%" />
 								</items>
@@ -95,7 +95,7 @@
 										<core:Icon src="sap-icon://map"
 											class="iconSizeSmall sapUiSmallMarginBegin " color="#009de0">
 										</core:Icon>
-										<Label text="{path:'location',formatter:'.translatEnumLabel'}"
+										<Label text="{Description}"
 											class="customSmallMarginLeft infoLabel" width="100%" />
 									</HBox>
 									<HBox justifyContent="Center" alignItems="Center">

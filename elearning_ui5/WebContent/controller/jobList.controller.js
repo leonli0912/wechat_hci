@@ -8,6 +8,7 @@ function(EmailBindingDialog, Controller) {
     .extend(
     "elearning_ui5.controller.jobList", 
     {
+    	SERVICE_URL:"/hcpserver/Products",
         _positionBefore: 0,
         _emailBindingDialog: null ,
         
@@ -39,7 +40,7 @@ function(EmailBindingDialog, Controller) {
 										 * @memberOf resume-collection-service.jobList
 										 */
         onInit: function() {
-            
+        	this.sServiceUrl = "./hcpserver";
             // var url = window.location.href;
             // var str = "?wechatId=";
             // if(url.indexOf(str)!=-1) {
@@ -70,47 +71,35 @@ function(EmailBindingDialog, Controller) {
             var requestBody = this
             ._getFilterRequestBody();
             // load picklist from SF
-            var cfg = {
-                url: "job/list",
-                type: 'POST',
-                dataType: 'json',
-                data: JSON
-                .stringify(requestBody),
-                contentType: 'application/json;charset=UTF-8'
-            };
-            
+            //var oDataModel = new sap.ui.model.odata.ODataModel("/hcpserver"); 
             this.getView().setBusy(true);
-            $
-            .ajax(cfg)
-            .success(
-            function(data) {
-                hidePageLoading();
-                that
-                .getView()
-                .setBusy(
-                false);
-                var listModel = new sap.ui.model.json.JSONModel();
-                listModel
-                .setData(data);
-                that
-                .getView()
-                .setModel(
-                listModel);
-                var isUserExist = emailBindingDialog
-                .checkUserExist();
-                if (!isUserExist.primaryEmail) {
-                    that._emailBindingDialog
-                    .open();
+            $.ajax({
+                type: "GET",
+                dataType: 'json',
+                url: this.SERVICE_URL + "?$format=json",
+                contentType: "application/json",
+                success: function(json) {
+                	that.getView().setBusy(false);
+                    console.log("success...");
+                    var listModel = new sap.ui.model.json.JSONModel();
+                    listModel.setData(json.value);
+                    that.getView().setModel(listModel);
+                },
+                error: function(e) {
+                    console.log(e.message);
+                    that.getView().setBusy(false);
                 }
-            })
-            .error(
-            function(data) {
-                //hidePageLoading();
-                that
-                .getView()
-                .setBusy(
-                false);
             });
+
+            var cfg = {
+            	url:"https://demoservicep1942455002trial.hanatrial.ondemand.com/DemoService/DemoService.svc/",	
+                //url: "job/list",
+                type: "GET",
+                dataType: 'json',
+               // data: JSON.stringify(requestBody),
+                contentType: 'application/xml;charset=UTF-8'
+            };
+
             if (!this._emailBindingDialog) {
                 
                 this._emailBindingDialog = emailBindingDialog
