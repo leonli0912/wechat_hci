@@ -30,6 +30,11 @@
                     "pattern": "jobList", 
                     "name": "jobList", 
                     "target": "jobList"
+                },
+                {
+                    "pattern": "ranking", 
+                    "name": "ranking", 
+                    "target": "ranking"
                 }
               
             ], 
@@ -40,6 +45,10 @@
                 },
                 "jobList":{
                     "viewName": "jobList", 
+                    "viewLevel": 1
+                },
+                 "ranking":{
+                    "viewName": "Ranking", 
                     "viewLevel": 1
                 }
               

@@ -43,7 +43,7 @@
 								<GenericTile
 									class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
 									header="Ranking" subheader="View My Ranking" frameType="OneByOne"
-									press="press">
+									press="onPressRanking">
 									<tileContent>
 										<TileContent footer="position in ranking">
 											<content>
@@ -57,7 +57,7 @@
 									header="Points" subheader="View My Points" frameType="OneByOne"
 									press="press">
 									<tileContent>
-										<TileContent footer="Course Finished">
+										<TileContent footer="Points Finished">
 											<content>
 												<NumericContent value="25" icon="sap-icon://leads" />
 											</content>

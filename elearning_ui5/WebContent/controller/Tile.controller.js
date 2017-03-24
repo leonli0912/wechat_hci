@@ -22,6 +22,10 @@ sap.ui.controller("elearning_ui5.controller.Tile", {
 		var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
 		oRouter.navTo("jobList");
 	},
+	onPressRanking : function(evt) {
+		var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+		oRouter.navTo("ranking");
+	},
 	
 	
 	
