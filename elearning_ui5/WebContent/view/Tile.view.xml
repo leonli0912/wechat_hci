@@ -9,7 +9,7 @@
 		</u:headItems>
 		<u:headEndItems>
 			<u:ShellHeadItem icon="sap-icon://log" tooltip="Logoff"
-				press="handleLogoffPress" />
+				press="onLogoffPress" />
 		</u:headEndItems>
 		<u:user>
 			<u:ShellHeadUserItem image="sap-icon://person-placeholder"
@@ -23,47 +23,52 @@
 	<Page title="Welcome " enableScrolling="false" navButtonPress="onNavBackPressed"
 		id="id_HomePage">
 		<content>
-	<!-- <l:VerticalLayout width="100%"> <l:content> <Panel> <headerToolbar> 
-		<Toolbar> <Title level="H2" text="Upper left" /> </Toolbar> </headerToolbar> 
-		<FlexBox height="13rem" alignItems="Start" justifyContent="Start"> <items> 
-		</items> </FlexBox> </Panel> </l:content> </l:VerticalLayout> -->
-								<GenericTile
-									class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
-									header="Courses" subheader="View My Course" frameType="OneByOne"
-									press="onPressCourse">
-									<tileContent>
-										<TileContent footer="Course Finished">
-											<content>
-												<NumericContent value="15"
-													icon="sap-icon://study-leave" />
-											</content>
-										</TileContent>
-									</tileContent>
-								</GenericTile>
-								<GenericTile
-									class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
-									header="Ranking" subheader="View My Ranking" frameType="OneByOne"
-									press="onPressRanking">
-									<tileContent>
-										<TileContent footer="position in ranking">
-											<content>
-												<NumericContent value="8" icon="sap-icon://competitor" />
-											</content>
-										</TileContent>
-									</tileContent>
-								</GenericTile>
-								<GenericTile
-									class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
-									header="Points" subheader="View My Points" frameType="OneByOne"
-									press="press">
-									<tileContent>
-										<TileContent footer="Points Finished">
-											<content>
-												<NumericContent value="25" icon="sap-icon://leads" />
-											</content>
-										</TileContent>
-									</tileContent>
-								</GenericTile>
+			<!-- <l:VerticalLayout width="100%"> <l:content> <Panel> <headerToolbar> 
+				<Toolbar> <Title level="H2" text="Upper left" /> </Toolbar> </headerToolbar> 
+				<FlexBox height="13rem" alignItems="Start" justifyContent="Start"> <items> 
+				</items> </FlexBox> </Panel> </l:content> </l:VerticalLayout> -->
+			<VBox width="100%" height="100%" justifyContent="Center"
+				alignItems="Center">
+				<HBox alignItems="Center" id="tileContainer">
+				<items>
+					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+						header="Courses" subheader="View My Course" frameType="OneByOne"
+						press="onPressCourse">
+						<tileContent>
+							<TileContent footer="Course Finished">
+								<content>
+									<NumericContent value="15" icon="sap-icon://study-leave" />
+								</content>
+							</TileContent>
+						</tileContent>
+					</GenericTile>
+				
+					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+						header="Ranking" subheader="View My Ranking" frameType="OneByOne"
+						press="onPressRanking">
+						<tileContent>
+							<TileContent footer="position in ranking">
+								<content>
+									<NumericContent value="8" icon="sap-icon://competitor" />
+								</content>
+							</TileContent>
+						</tileContent>
+					</GenericTile>
+			
+					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+						header="Points" subheader="View My Points" frameType="OneByOne"
+						press="press">
+						<tileContent>
+							<TileContent footer="Points Finished">
+								<content>
+									<NumericContent value="25" icon="sap-icon://leads" />
+								</content>
+							</TileContent>
+						</tileContent>
+					</GenericTile>
+					</items>
+				</HBox>
+			</VBox>
 			<!-- <TileContainer xmlns="sap.m" id="tilecontainer_id" width="100%" height="100%" 
 				editable="" allowAdd="" tileMove="" tileDelete="" tileAdd=""> <tiles> <StandardTile 
 				xmlns="sap.m" id="ida2" removable="true" title="Courses" info="View My Course" 

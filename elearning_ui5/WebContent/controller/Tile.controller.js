@@ -4,7 +4,7 @@
 sap.ui.controller("elearning_ui5.controller.Tile", {
 	oCount : 0,
 	onInit : function() {
-		// this.bus = this.getEventBus();
+		
 		var Windowwidth = window.screen.availWidth;
 		// init router
 		var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
@@ -26,7 +26,10 @@ sap.ui.controller("elearning_ui5.controller.Tile", {
 		var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
 		oRouter.navTo("ranking");
 	},
-	
+	onLogoffPress:function(){
+		var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+		oRouter.navTo("logon");
+	},
 	
 	
 	onShowSplitScreen : function(evt) {

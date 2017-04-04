@@ -77,7 +77,7 @@
 						<ToolbarSpacer />
 					</Toolbar>
 				</my:headerToolbar>
-				<CustomListItem type="Navigation" press="press">
+				<CustomListItem type="Navigation" press="onPressItem">
 					<content>
 						<VBox width="100%" height="5rem" class="sapUiSmallPaddingTop">
 							<FlexBox alignItems="Center" justifyContent="SpaceBetween"
@@ -85,7 +85,7 @@
 								<items>
 									<Label text="{Name}" class="sapUiSmallMarginBegin colorSetBlue"
 										width="100%" design="Bold" />
-									<Label text="{seen}" class="sapUiLargeMarginEnd" width="100%" />
+									<Label text="{ID}" class="sapUiLargeMarginEnd" width="100%" />
 								</items>
 							</FlexBox>
 							<FlexBox alignItems="Start" justifyContent="SpaceBetween"

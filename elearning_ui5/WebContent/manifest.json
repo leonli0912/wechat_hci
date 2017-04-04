@@ -35,7 +35,17 @@
                     "pattern": "ranking", 
                     "name": "ranking", 
                     "target": "ranking"
-                }
+                },
+                {
+                    "pattern": "logon", 
+                    "name": "logon", 
+                    "target": "logon"
+                }, 
+                {
+			        "pattern":"courseDetail/{courseId}",
+			        "name":"courseDetail",
+			        "target":"courseDetail"
+			    }
               
             ], 
             "targets": {
@@ -49,6 +59,14 @@
                 },
                  "ranking":{
                     "viewName": "Ranking", 
+                    "viewLevel": 1
+                },
+                "logon":{
+                    "viewName": "Logon", 
+                    "viewLevel": 1
+                },
+                "courseDetail":{
+                    "viewName": "CourseDetail", 
                     "viewLevel": 1
                 }
               

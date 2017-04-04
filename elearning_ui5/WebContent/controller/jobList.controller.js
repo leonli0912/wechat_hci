@@ -12,20 +12,15 @@ function(EmailBindingDialog, Controller) {
         _positionBefore: 0,
         _emailBindingDialog: null ,
         
-        press: function(oEvent) {
+        onPressItem: function(oEvent) {
             
-            var rowId = oEvent.getSource()
-            .getBindingContext()
-            .getPath();
+            var rowId = oEvent.getSource().getBindingContext().getPath();
             var rows = rowId.match(/\d+/g);
             var rowNo = rows[rows.length - 1];
-            var jobId = oEvent.getSource()
-            .getBindingContext()
-            .getModel().getData().jobs[rowNo].jobId;
-            var oRouter = sap.ui.core.UIComponent
-            .getRouterFor(this);
-            oRouter.navTo("jobDetail", {
-                jobId: jobId
+            var courseId = oEvent.getSource().getBindingContext().getProperty().ID;
+            //var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+            this._router.navTo("courseDetail", {
+                courseId: courseId
             });
         },
         /**

@@ -1,0 +1,50 @@
+<mvc:View controllerName="elearning_ui5.controller.CourseDetail"
+	xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:u="sap.ui.unified" xmlns="sap.m" xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:my="elearning_ui5.src.js" xmlns:viz="sap.viz.ui5.controls" xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
+    xmlns:viz.data="sap.viz.ui5.data">
+	<html:style>
+		.iconSizeSmall{
+		font-size:0.75rem;
+		}
+		.customSmallMarginLeft{
+		margin-left:3px;
+		}
+		.colorSetBlue{
+		color:#00679e;
+		}
+		.infoLabel{
+		/* color:#009de0; */
+		max-width:10rem;
+		}
+		.infoLabel{
+		font-size:0.75rem;
+		margin-top: 0.25rem;
+		}
+		.jobList{
+		padding-bottom:3rem;
+		}
+
+		.jobFilterIcon .sapMBtnIcon{
+		color:#666 !important;
+		}
+
+		.personalCenterIcon .sapMBtnIcon{
+		color:#666 !important;
+		}
+
+		.jobFacetFilter .sapMTB-Info-CTX.sapMTB{
+		background:#009de0;
+		}
+
+		.jobFacetFilter .sapMTB-Info-CTX .sapMText{
+		color: #f1f1f1;
+		font-size: 0.75rem;
+		}
+	</html:style>
+	<Page title="{wi18n>JOB_LIST_PAGE_TITLE}" showHeader="false">
+
+		
+	
+	</Page>
+</mvc:View>

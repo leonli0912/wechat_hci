@@ -1,0 +1,38 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" controllerName="elearning_ui5.controller.Logon"
+	xmlns:custom="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+	xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:l="sap.ui.layout">
+	<Page class="myLoginPage" showHeader="false" enableScrolling="false">
+		<content>
+			<Panel width="auto" class="sapUiSmallPadding" id="authPanel">
+				<HBox alignItems="Center" justifyContent="Center">
+					<Image id="vendorIcon" densityAware="false" src="" width="5rem"
+						class="sapAuthPotraitImage">
+					</Image>
+				</HBox>
+				<VBox class="sapUiSmallMarginTop">
+					<Input width="100%" id="username" type="text"
+						class="sapUiSmallMarginBottom" placeholder="USERNAME" />
+					<Input width="100%" id="password" type="Password"
+						class="sapUiSmallMarginBottom" placeholder="PASSWORD" />
+					<FlexBox alignItems="Center" justifyContent="Start">
+						<items>
+							<Input id="verifyCode" width="50%" type="text"
+								placeholder="{wi18n>WEB_AUTH_VERIFYCODE}" visible="false" />
+							<Image id="verifyCodeImg" src="{/verifyCodeUrl}" class="sapAuthPotraitImage"
+								visible="false" press="getVerifyCode" />
+						</items>
+					</FlexBox>
+					<HBox id="dpcsAgreed" alignItems="Center" justifyContent="Start"
+						class="sapUiTinyMarginTop">
+						<CheckBox id="aggreementCheck" text="{wi18n>WEB_AUTH_AGREEMENT}"
+							selected="false" class="sapUiSmallMarginEnd" />
+						<Link class="statementLabel" press=".showAggreement"
+							text="{wi18n>WEB_AUTH_AGREEMENT_LINK}" />
+					</HBox>
+				</VBox>
+				<Button width="100%" class="sapUiSmallMarginTop commonBtn"
+					press="authLogin" text="{wi18n>WEB_AUTH_BTN_LOGIN}"></Button>
+			</Panel>
+		</content>
+	</Page>
+</mvc:View>
