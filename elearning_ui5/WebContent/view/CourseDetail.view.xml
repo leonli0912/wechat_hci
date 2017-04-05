@@ -1,50 +1,61 @@
 <mvc:View controllerName="elearning_ui5.controller.CourseDetail"
 	xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:mvc="sap.ui.core.mvc"
 	xmlns:u="sap.ui.unified" xmlns="sap.m" xmlns:html="http://www.w3.org/1999/xhtml"
-	xmlns:my="elearning_ui5.src.js" xmlns:viz="sap.viz.ui5.controls" xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
-    xmlns:viz.data="sap.viz.ui5.data">
+	xmlns:my="elearning_ui5.src.js" xmlns:viz="sap.viz.ui5.controls"
+	xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds" xmlns:viz.data="sap.viz.ui5.data">
 	<html:style>
-		.iconSizeSmall{
-		font-size:0.75rem;
-		}
-		.customSmallMarginLeft{
-		margin-left:3px;
-		}
-		.colorSetBlue{
-		color:#00679e;
-		}
-		.infoLabel{
-		/* color:#009de0; */
-		max-width:10rem;
-		}
-		.infoLabel{
-		font-size:0.75rem;
-		margin-top: 0.25rem;
-		}
-		.jobList{
-		padding-bottom:3rem;
+.jobInfoPage{
+		background:#f2f2f2;
 		}
 
-		.jobFilterIcon .sapMBtnIcon{
-		color:#666 !important;
+		.infoList{
+		border-radius:5px;
+		border:1px solid #eee;
 		}
 
-		.personalCenterIcon .sapMBtnIcon{
-		color:#666 !important;
+		.jobInfoItem{
+		border-bottom:1px solid #eee;
+		height:2rem;
 		}
 
-		.jobFacetFilter .sapMTB-Info-CTX.sapMTB{
-		background:#009de0;
+		.jobInfoItem .sapMSLITitleOnly{
+		font-size:0.8rem;
 		}
 
-		.jobFacetFilter .sapMTB-Info-CTX .sapMText{
-		color: #f1f1f1;
-		font-size: 0.75rem;
+		.jobInfoItem .sapMSLIImgIcon{
+		font-size:0.8rem;
+		color:#009de0;
+		}
+
+		.jobInfoPanel .sapMIBar{
+		background:#eee;
+		margin-top:10px;
+		border-top:1px solid #eee;
+		}
+
+		.jobInfoPanel .sapMIBar .sapMBarChild{
+		width: 10rem;
+		height: 100%;
+		line-height: 3rem;
+		border-bottom: 3px solid
+		#009de0;
+		}
+
+		.jobInfoPanel .sapMPanelContent .sapMText{
+		line-height:1.25rem;
+		}
+
+		.detailFooter{
+		padding:0px 1rem 0px 0px;
 		}
 	</html:style>
-	<Page title="{wi18n>JOB_LIST_PAGE_TITLE}" showHeader="false">
+	<Page title="Course" id="jobDetailPage"
+		class="jobInfoPage" showNavButton="true" navButtonPress="onButtonPress">
 
-		
-	
+		<Panel id="jobDetailInfo">
+			<StandardListItem title="Course" info="BC100">
+			</StandardListItem>
+		</Panel>
+
 	</Page>
 </mvc:View>
