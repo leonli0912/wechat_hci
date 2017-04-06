@@ -4,7 +4,7 @@
 	xmlns:my="elearning_ui5.src.js" xmlns:viz="sap.viz.ui5.controls"
 	xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds" xmlns:viz.data="sap.viz.ui5.data">
 	<html:style>
-.jobInfoPage{
+		.jobInfoPage{
 		background:#f2f2f2;
 		}
 
@@ -18,7 +18,8 @@
 		height:2rem;
 		}
 
-		.jobInfoItem .sapMSLITitleOnly{
+		.jobInfoItem
+		.sapMSLITitleOnly{
 		font-size:0.8rem;
 		}
 
@@ -41,7 +42,8 @@
 		#009de0;
 		}
 
-		.jobInfoPanel .sapMPanelContent .sapMText{
+		.jobInfoPanel
+		.sapMPanelContent .sapMText{
 		line-height:1.25rem;
 		}
 
@@ -49,15 +51,16 @@
 		padding:0px 1rem 0px 0px;
 		}
 	</html:style>
-	<Page title="Course" id="jobDetailPage"
-		class="jobInfoPage" showNavButton="true" navButtonPress="onButtonPress">
+	<Page title="Course" id="jobDetailPage" class="jobInfoPage"
+		showNavButton="true" navButtonPress="onButtonPress">
 
 		<Panel id="jobDetailInfo">
 			<StandardListItem title="Course" info="BC100">
 			</StandardListItem>
 			<StandardListItem title="Course Type" info="Mandatory">
 			</StandardListItem>
-			<StandardListItem title="Course Complete Status" info="In Process">
+			<StandardListItem title="Course Complete Status"
+				info="In Process">
 			</StandardListItem>
 			<StandardListItem title="Course Total Time" info="40">
 			</StandardListItem>
@@ -68,6 +71,13 @@
 			<StandardListItem title="Course Score" info="5">
 			</StandardListItem>
 		</Panel>
-
+		<Toolbar height="3rem" >
+		<Title text="Course Description">
+		</Title>
+		</Toolbar>
+		<Panel class="jobInfoPanel">
+			<Text text="test test test" class="sapUiSmallMarginTop">
+			</Text>
+		</Panel>
 	</Page>
 </mvc:View>
