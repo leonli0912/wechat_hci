@@ -55,6 +55,18 @@
 		<Panel id="jobDetailInfo">
 			<StandardListItem title="Course" info="BC100">
 			</StandardListItem>
+			<StandardListItem title="Course Type" info="Mandatory">
+			</StandardListItem>
+			<StandardListItem title="Course Complete Status" info="In Process">
+			</StandardListItem>
+			<StandardListItem title="Course Total Time" info="40">
+			</StandardListItem>
+			<StandardListItem title="Course Study Time" info="20">
+			</StandardListItem>
+			<StandardListItem title="Course Study CPE" info="50">
+			</StandardListItem>
+			<StandardListItem title="Course Score" info="5">
+			</StandardListItem>
 		</Panel>
 
 	</Page>
