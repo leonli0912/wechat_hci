@@ -62,8 +62,9 @@
                     "viewLevel": 1
                 },
                 "logon":{
-                    "viewName": "Logon", 
-                    "viewLevel": 1
+                    "viewName": "Login", 
+                    "viewLevel": 1,
+                    "viewType": "JS"
                 },
                 "courseDetail":{
                     "viewName": "CourseDetail", 

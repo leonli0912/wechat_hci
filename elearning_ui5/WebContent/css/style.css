@@ -1,0 +1,15 @@
+.login_box {
+    padding: 10% 37% 2rem 37%;
+}
+@media only screen and (max-width: 1200px) {
+    .login_box {
+        padding: 10% 27% 2rem 27%;
+        transition: padding 1s;
+    }
+}
+@media only screen and (max-width: 800px) {
+    .login_box {
+        padding: 30% 10% 2rem 10%;
+        transition: padding 1s;
+    }
+}
