@@ -28,7 +28,7 @@ sap.ui.controller("elearning_ui5.controller.Tile", {
 	},
 	onLogoffPress:function(){
 		var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-		oRouter.navTo("logon");
+		oRouter.navTo("logon",{logout:true});
 	},
 	
 	

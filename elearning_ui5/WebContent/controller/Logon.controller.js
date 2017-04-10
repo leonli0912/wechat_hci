@@ -6,11 +6,16 @@ sap.ui.define([ "elearning_ui5/src/js/format/CustomerFormat",'sap/ui/core/mvc/Co
 		
 		onInit : function() {
 			this.oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+			oRouter.getRoute("logon").attachPatternMatched(
+					this._onPatternMatched, this);
 			if(this._logonToken){
 				
 				this.oRouter.navTo("home");
 			}
 											
+		},
+		_onPatternMatched:function(){
+			
 		},
 		onPressLogon:function(){
 			var username = this.getView().byId("username").getValue();
@@ -18,10 +23,24 @@ sap.ui.define([ "elearning_ui5/src/js/format/CustomerFormat",'sap/ui/core/mvc/Co
 			//var verifyCode = this.getView().byId("verifyCode").getValue();
 			//var aggreementCheck = this.getView().byId("aggreementCheck").getSelected();
 			//var dpcsShowed = this.getView().byId("dpcsAgreed").getVisible();
-			
+			if(username===""){
+				this.getView().byId("username").setValueState("Error");
+				this.getView().byId("username").setValueStateText(
+						"请输入用户名");
+				return;
+			};
+			if(password===""){
+				this.getView().byId("password").setValueState("Error");
+				this.getView().byId("password").setValueStateText(
+						"请输入密码");
+				return;
+			};
 
-			if (username === "" || password === "") {
+/*			if (username === "" || password === "") {
 				var bCompact = !!this.getView().$().closest(".sapUiSizeCompact").length;
+				this.getView().byId("username").setValueState("Error");
+				this.getView().byId("username").setValueStateText(
+						"请输入用户名和密码");
 				sap.m.MessageBox.alert(
 				    	"请输入用户名和密码",
 				    	{
@@ -30,7 +49,7 @@ sap.ui.define([ "elearning_ui5/src/js/format/CustomerFormat",'sap/ui/core/mvc/Co
 				    );
 				return;
 			}
-
+*/
 			this.getView().setBusy(true);
 			var param = "?username=" + username +
 						"&password=" + password +
