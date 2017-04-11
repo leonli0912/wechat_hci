@@ -11,4 +11,8 @@ sap.ui.define([ "elearning_ui5/src/js/format/CustomerFormat",'sap/ui/core/mvc/Co
 				this.oRouter.navTo("home");
 			}
 											
-		}});})
+		},
+		onPress:function(){
+			this.oRouter.navTo("home");
+		}
+	});})

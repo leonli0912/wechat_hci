@@ -179,9 +179,7 @@ sap.ui.jsview("elearning_ui5.view.Login", {
                         id: "logon_button",
                         text: "LOGON_BUTTON_TEXT",
                         type: sap.m.ButtonType.Emphasized,
-                        press: function() {
-                            oController.sendForm();
-                        }
+                        press: [oController.onPress, oController]
                     }).addStyleClass("sapMLabelBold").setWidth("100%"),
                 ],
                 direction: "Column"
