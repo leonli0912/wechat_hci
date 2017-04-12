@@ -167,11 +167,11 @@ sap.ui.jsview("elearning_ui5.view.Login", {
                         ]
                     }),*/
                     new sap.m.Input({
-                        id: "xs_username",
+                        id: "username",
                         placeholder: "USERNAME_TEXT",
                     }).addStyleClass("login_username"),
                     new sap.m.Input({
-                        id: "xs_password",
+                        id: "password",
                         type: sap.m.InputType.Password,
                         placeholder: "PASSWORD_TEXT",
                     }).addStyleClass("login_password"),
@@ -179,7 +179,7 @@ sap.ui.jsview("elearning_ui5.view.Login", {
                         id: "logon_button",
                         text: "LOGON_BUTTON_TEXT",
                         type: sap.m.ButtonType.Emphasized,
-                        press: [oController.onPress, oController]
+                        press: [oController.onPressLogon, oController]
                     }).addStyleClass("sapMLabelBold").setWidth("100%"),
                 ],
                 direction: "Column"
