@@ -10,7 +10,7 @@ function(EmailBindingDialog, Controller) {
     {
     	SERVICE_URL:"/hcpserver/Products",
     	//TOKEN_URL:"/hcp_learning/oauth-api/rest/v1/token",
-    	USERINFO_URL:"/hcp_learning/odatav4/searchStudent/v1/Students?$filter=criteria/learnerID eq %27eddiy%27",
+    	USERINFO_URL:"/hcp_learning/odatav4/public/user/learningHistory/v1/learninghistorys?$filter=criteria/maxNumberToRetrieve eq 10 and criteria/targetUserID eq %27Eddiy%27",
     	_access_token:null,
     	_token_type:null,
         _positionBefore: 0,
@@ -85,10 +85,9 @@ function(EmailBindingDialog, Controller) {
                         	
                             console.log("success...");
                             console.log(json);
-                            //var listModel = new sap.ui.model.json.JSONModel();
-                            
-                            //listModel.setData(json.value);
-                            //that.getView().setModel(listModel);
+                            var listModel = new sap.ui.model.json.JSONModel();
+                            listModel.setData(json.value);
+                            that.getView().setModel(listModel);
                             
                         },
                         error: function(e) {
