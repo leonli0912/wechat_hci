@@ -83,9 +83,9 @@
 							<FlexBox alignItems="Center" justifyContent="SpaceBetween"
 								class="sapUiSmallMarginTop">
 								<items>
-									<Label text="{Name}" class="sapUiSmallMarginBegin colorSetBlue"
+									<Label text="{title}" class="sapUiSmallMarginBegin colorSetBlue"
 										width="100%" design="Bold" />
-									<Label text="{ID}" class="sapUiLargeMarginEnd" width="100%" />
+									<Label text="{status}" class="sapUiLargeMarginEnd" width="100%" />
 								</items>
 							</FlexBox>
 							<FlexBox alignItems="Start" justifyContent="SpaceBetween"
@@ -95,14 +95,14 @@
 										<core:Icon src="sap-icon://map"
 											class="iconSizeSmall sapUiSmallMarginBegin " color="#009de0">
 										</core:Icon>
-										<Label text="{Description}"
+										<Label text="{componentID}"
 											class="customSmallMarginLeft infoLabel" width="100%" />
 									</HBox>
 									<HBox justifyContent="Center" alignItems="Center">
 										<core:Icon src="sap-icon://create-entry-time" class="iconSizeSmall sapUiSmallMarginBegin"
 											color="#009de0">
 										</core:Icon>
-										<Label text="{path:'createAt',formatter:'.dateFormat'}"
+										<Label text="{path:'formattedRevisionDate',formatter:'.dateFormat'}"
 											class="customSmallMarginLeft infoLabel" width="100%" />
 									</HBox>
 								</items>

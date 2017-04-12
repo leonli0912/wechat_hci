@@ -9,8 +9,8 @@ function(EmailBindingDialog, Controller) {
     "elearning_ui5.controller.jobList", 
     {
     	SERVICE_URL:"/hcpserver/Products",
-    	TOKEN_URL:"/hcp_learning/oauth-api/rest/v1/token",
-    	USERINFO_URL:"/hcp_learning/odatav4/searchStudent/v1/Students?$filter=criteria/learnerID eq %27eddiy%27",
+    	//TOKEN_URL:"/hcp_learning/oauth-api/rest/v1/token",
+    	USERINFO_URL:"/hcp_learning/odatav4/public/user/learningHistory/v1/learninghistorys?$filter=criteria/maxNumberToRetrieve eq 10 and criteria/targetUserID eq %27Eddiy%27",
     	_access_token:null,
     	_token_type:null,
         _positionBefore: 0,
@@ -42,7 +42,10 @@ function(EmailBindingDialog, Controller) {
         	//this.sServiceUrl = "./hcpserver";
             var recommendModel = new sap.ui.model.json.JSONModel();
             var that = this;
- 
+            var token_json = JSON.parse(sap.ui.getCore().getModel("token").getJSON());
+            this._access_token = token_json.access_token;
+            this._token_type =token_json.token_type;
+            
             this._router = sap.ui.core.UIComponent
             .getRouterFor(this);
             
@@ -68,43 +71,13 @@ function(EmailBindingDialog, Controller) {
                     that.getView().setBusy(false);
                 }
             });*/
-            var bodydata= {
-                    grant_type: "client_credentials",
-                    scope: {
-                        userId: "PLATEAU",
-                        companyId: "jiaxing",
-                        userType: "admin",
-                        resourceType: "learning_public_api"
-                    }
-                };
-            
-            
-            $.ajax({
-                type: "POST",
-                dataType: 'json',
-                url: this.TOKEN_URL,
-                contentType: "application/json",
-                headers: {
-                    "Authorization": "Basic amlheGluZzpjNjdmODBlODJlMWFkOGIzZjc0OGU1ODQ2YWQ5ODQ1Mzc2ZGU5NjU0ODNjNjM5NTAzMDZiMTAwYjdlMDhkMzFi",
-                  },
-                data:JSON.stringify(bodydata),
-                success: function(json) {
-                	that.getView().setBusy(false);
-                	that._access_token = json.access_token;
-                	that._token_type=json.token_type;
-                    console.log("success...");
-                    console.log(json);
-                    //var listModel = new sap.ui.model.json.JSONModel();
-                    
-                    //listModel.setData(json.value);
-                    //that.getView().setModel(listModel);
                     $.ajax({
                         type: "GET",
                         dataType: 'json',
                         url: this.USERINFO_URL,
                         contentType: "application/json",
                         headers: {
-                            "Authorization": that._token_type + " " +that.token_type,
+                            "Authorization": that._token_type + " " +that._access_token,
                           },
                         
                         success: function(json) {
@@ -112,10 +85,9 @@ function(EmailBindingDialog, Controller) {
                         	
                             console.log("success...");
                             console.log(json);
-                            //var listModel = new sap.ui.model.json.JSONModel();
-                            
-                            //listModel.setData(json.value);
-                            //that.getView().setModel(listModel);
+                            var listModel = new sap.ui.model.json.JSONModel();
+                            listModel.setData(json.value);
+                            that.getView().setModel(listModel);
                             
                         },
                         error: function(e) {
@@ -123,14 +95,6 @@ function(EmailBindingDialog, Controller) {
                             that.getView().setBusy(false);
                         }
                     });
-                    
-                    
-                },
-                error: function(e) {
-                    console.log(e.message);
-                    that.getView().setBusy(false);
-                }
-            });
 
 /*            var cfg = {
             	url:"https://demoservicep1942455002trial.hanatrial.ondemand.com/DemoService/DemoService.svc/",	
