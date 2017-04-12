@@ -55,24 +55,34 @@
 		showNavButton="true" navButtonPress="onButtonPress">
 
 		<Panel id="jobDetailInfo">
+		    <StandardListItem title="Item" 
+		                       info="{/courseInfo/componentTypeID} {/courseInfo/formattedRevisionDate} 
+		                             {/courseInfo/title} {/courseInfo/revisionNumber}">
+			</StandardListItem>
 			<StandardListItem title="Course" info="{/courseInfo/componentID}">
+			</StandardListItem>
+			<StandardListItem title="Scheduled ID" info="{/courseInfo/scheduledID}">
+			</StandardListItem>
+			
+			<StandardListItem title="Instructor" info="{/courseInfo/instructorName}">
+			</StandardListItem>
+			<StandardListItem title="Complete Date"	info="{/courseInfo/formattedRevisionDate}">
+			</StandardListItem>
+			<StandardListItem title="Complete Status" info="{/courseInfo/status}">
 			</StandardListItem>
 			<StandardListItem title="Total Hours" info="{/courseInfo/totalHours}">
 			</StandardListItem>
-			<StandardListItem title="Course Study Time" info="{/courseInfo/formattedRevisionDate}">
+			<StandardListItem title="Contact Hours" info="{/courseInfo/contactHours}">
 			</StandardListItem>
-			<StandardListItem title="Course Complete Status"	info="{/courseInfo/status}">
+			<StandardListItem title="Credit Hours" info="{/courseInfo/creditHours}">
 			</StandardListItem>
-			<StandardListItem title="Course Type" info="Mandatory">
+			<StandardListItem title="CPE Hours" info="{/courseInfo/cpeHours}">
 			</StandardListItem>
-
-			<StandardListItem title="Course Total Time" info="40">
+			<StandardListItem title="Grade" info="{/courseInfo/grade}">
 			</StandardListItem>
+			<StandardListItem title="Course Type" info=" ">
+			</StandardListItem>			
 			
-			<StandardListItem title="Course Study CPE" info="50">
-			</StandardListItem>
-			<StandardListItem title="Course Score" info="5">
-			</StandardListItem>
 		</Panel>
 		<Toolbar height="3rem" >
 		<Title text="Course Description">
