@@ -15,7 +15,7 @@ sap.ui.define([ 'sap/ui/core/UIComponent' ], function(UIComponent) {
 			var router = this.getRouter();
 			this.routeHandler = new sap.m.routing.RouteMatchedHandler(router);
 			router.initialize();
-			router.navTo("tile");
+			router.navTo("logon");
 		},
 		createContent : function() {
 			this.view = sap.ui.view({
