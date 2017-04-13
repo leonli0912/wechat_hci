@@ -68,7 +68,8 @@
 			</StandardListItem>
 			<StandardListItem title="Complete Date"	info="{/courseInfo/formattedRevisionDate}">
 			</StandardListItem>
-			<StandardListItem title="Complete Status" info="{/courseInfo/status}">
+			<StandardListItem title="Complete Status" 
+			                   info="{/courseInfo/completionStatusID} ({/courseInfo/status})">
 			</StandardListItem>
 			<StandardListItem title="Total Hours" info="{/courseInfo/totalHours}">
 			</StandardListItem>
