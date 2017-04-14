@@ -1,6 +1,6 @@
 <core:View xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:u="sap.ui.unified"
 	xmlns:l="sap.ui.layout" controllerName="elearning_ui5.controller.Tile">
-	<u:Shell id="myShell" icon="{/logo}">
+<!-- 	<u:Shell id="myShell" icon="{/logo}">
 		<u:headItems>
 			<u:ShellHeadItem tooltip="Configuration" icon="sap-icon://menu2"
 				press="handlePressConfiguration" />
@@ -13,13 +13,13 @@
 		</u:headEndItems>
 		<u:user>
 			<u:ShellHeadUserItem image="sap-icon://person-placeholder"
-				username="Karl Mustermann" press="handleUserItemPressed" />
+				username="Karl Mustermann" press="onPressUser" />
 		</u:user>
-		<!-- <u:search> <SearchField search="handleSearchPressed" /> </u:search> -->
+		<u:search> <SearchField search="handleSearchPressed" /> </u:search>
 		<u:paneContent>
 			<Text text="Lorem ipsum" />
 		</u:paneContent>
-	</u:Shell>
+	</u:Shell> -->
 	<Page title="Welcome " enableScrolling="false" navButtonPress="onNavBackPressed"
 		id="id_HomePage">
 		<content>

@@ -30,7 +30,10 @@ sap.ui.controller("elearning_ui5.controller.Tile", {
 		var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
 		oRouter.navTo("logon",{logout:true});
 	},
-	
+	onPressUser:function(){
+		var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+		oRouter.navTo("user",{userId:'u01'});
+	},
 	
 	onShowSplitScreen : function(evt) {
 		var oSource = evt.getSource();

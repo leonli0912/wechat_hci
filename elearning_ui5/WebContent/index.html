@@ -10,16 +10,46 @@
 <script id="sap-ui-bootstrap" type="text/javascript"
 	src="https://sapui5.hana.ondemand.com/resources/sap-ui-core.js"
 	data-sap-ui-theme="sap_bluecrystal"
-	data-sap-ui-xx-bindingSyntax="complex" data-sap-ui-libs="sap.m"
+	data-sap-ui-xx-bindingSyntax="complex" data-sap-ui-libs="sap.m,sap.ui.layout,sap.ui.unified"
 	data-sap-ui-resourceroots='{
             "elearning_ui5": "./"
         }'>
     </script>
 <script>
         sap.ui.getCore().attachInit(function() {
-   		 new sap.ui.core.ComponentContainer({
+        	
+/*    		 new sap.ui.core.ComponentContainer({
              name : "elearning_ui5"
           }).placeAt("content");
+   		  */
+   		 
+  
+
+   					var component = sap.ui.component({
+   							name: "elearning_ui5"
+   						});
+
+   					var componentContainer = new sap.ui.core.ComponentContainer({
+   					});
+   					componentContainer.setComponent(component);
+
+   					var personalCenterButton = new sap.ui.unified.ShellHeadItem({
+   						icon: "sap-icon://person-placeholder",
+   						press:function(){
+   							var oRouter = component.getRouter();
+   							oRouter.navTo("personalCenter", true);
+   						}
+   					});
+
+   					var oShell = new sap.ui.unified.Shell("mainShell",{
+   						icon : g_company_info.logo ? "wphoto/" + g_company_info.logo
+   								: "static/img/SAPLogo.png",
+   						headEndItems:[personalCenterButton],
+   						content : componentContainer
+   					}).placeAt("content");
+
+   					oShell.addStyleClass("mainShell");
+   				
         });
     </script>
 </head>
