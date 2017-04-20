@@ -1,0 +1,77 @@
+<mvc:View controllerName="elearning_ui5.controller.PersonalCenter"
+	xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:u="sap.ui.unified" xmlns="sap.m" xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:my="elearning_ui5.src.js">
+	<html:style>
+		.nickNameUI{
+		margin-top: 1.2rem;
+		font-size:0.8rem;
+		display: block;
+		text-align:center !important;
+		color:#666;
+		}
+
+		.portraitImage{
+		border:2px solid #fff;
+		border-radius:10px;
+		-webkit-box-reflect: below 0
+		-webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(0.85,
+		transparent), to(#f2f2f2));
+		}
+
+		.portraitContainer{
+		/* Permalink - use to edit and share this gradient:
+		http://colorzilla.com/gradient-editor/#008cd8+0,008ac1+100 */
+		background: #79B0CE; /* Old browsers */
+		background: -moz-linear-gradient(top, #79B0CE 0%, #008ac1 80%); /* FF3.6-15 */
+		background: -webkit-linear-gradient(top, #79B0CE 0%,#008ac1 80%); /*
+		Chrome10-25,Safari5.1-6 */
+		background: linear-gradient(to bottom, #79B0CE 0%,#008ac1 80%); /* W3C, IE10+,
+		FF16+, Chrome26+, Opera12+, Safari7+ */
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#79B0CE',
+		endColorstr='#008ac1',GradientType=0 ); /* IE6-9 */
+		}
+
+		.nickNameUI{
+		color:#fafafa;
+		}
+	</html:style>
+	<Page title="{wi18n>PERSONAL_CENTER}" showNavButton="true"
+		navButtonPress="onButtonPress">
+
+		<content>
+			<VBox width="100%">
+				<Panel class="portraitContainer">
+					<FlexBox alignItems="Center" justifyContent="Center" width="100%"
+						height="100%">
+						<items>
+							<VBox justifyContent="Center">
+								<core:Icon id="noPortrait" src="sap-icon://customer"
+									size="5rem" class="sapAuthPotraitImage portraitImage" />
+
+								<Image id="portrait" src="{/iconUrl}" width="6rem"
+									class="sapAuthPotraitImage portraitImage">
+								</Image>
+
+								<Label text="{/wechatUserName}" class="nickNameUI"></Label>
+							</VBox>
+						</items>
+					</FlexBox>
+				</Panel>
+				<List>
+					<StandardListItem title="{wi18n>CANDIDATE_LIST}"
+						type="Navigation" press="candidateListPress" />
+					<StandardListItem title="{wi18n>PERSONAL_INFORMATION_MODIFY}"
+						type="Navigation" press="internalEmailPress" />
+					<StandardListItem title="{wi18n>APPLY_HISTORY}"
+						type="Navigation" press="applyHistory" />
+					<StandardListItem title="{wi18n>RESUME_CHANGE_HISTORY}"
+						type="Navigation" press="resumeChangeHistory" />
+					<!-- <StandardListItem title="{wi18n>MY_INTERVIEW}" type="Navigation" 
+						press="viewInterviewInfo" /> -->
+				</List>
+			</VBox>
+		</content>
+
+	</Page>
+</mvc:View>

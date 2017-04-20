@@ -45,6 +45,11 @@
 			        "pattern":"courseDetail/{courseId}",
 			        "name":"courseDetail",
 			        "target":"courseDetail"
+			    },
+			    {
+			    	"pattern":"personalCenter",
+			        "name":"personalCenter",
+			        "target":"personalCenter"
 			    }
               
             ], 
@@ -68,6 +73,10 @@
                 },
                 "courseDetail":{
                     "viewName": "CourseDetail", 
+                    "viewLevel": 1
+                },
+                "personalCenter":{
+                    "viewName": "PersonalCenter", 
                     "viewLevel": 1
                 }
               

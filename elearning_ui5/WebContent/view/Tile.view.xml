@@ -1,27 +1,17 @@
 <core:View xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:u="sap.ui.unified"
 	xmlns:l="sap.ui.layout" controllerName="elearning_ui5.controller.Tile">
-<!-- 	<u:Shell id="myShell" icon="{/logo}">
-		<u:headItems>
-			<u:ShellHeadItem tooltip="Configuration" icon="sap-icon://menu2"
-				press="handlePressConfiguration" />
-			<u:ShellHeadItem tooltip="Home" icon="sap-icon://home"
-				visible="false" press="handlePressHome" />
-		</u:headItems>
-		<u:headEndItems>
-			<u:ShellHeadItem icon="sap-icon://log" tooltip="Logoff"
-				press="onLogoffPress" />
-		</u:headEndItems>
-		<u:user>
-			<u:ShellHeadUserItem image="sap-icon://person-placeholder"
-				username="Karl Mustermann" press="onPressUser" />
-		</u:user>
-		<u:search> <SearchField search="handleSearchPressed" /> </u:search>
-		<u:paneContent>
-			<Text text="Lorem ipsum" />
-		</u:paneContent>
-	</u:Shell> -->
+	<!-- <u:Shell id="myShell" icon="{/logo}"> <u:headItems> <u:ShellHeadItem 
+		tooltip="Configuration" icon="sap-icon://menu2" press="handlePressConfiguration" 
+		/> <u:ShellHeadItem tooltip="Home" icon="sap-icon://home" visible="false" 
+		press="handlePressHome" /> </u:headItems> <u:headEndItems> <u:ShellHeadItem 
+		icon="sap-icon://log" tooltip="Logoff" press="onLogoffPress" /> </u:headEndItems> 
+		<u:user> <u:ShellHeadUserItem image="sap-icon://person-placeholder" username="Karl 
+		Mustermann" press="onPressUser" /> </u:user> <u:search> <SearchField search="handleSearchPressed" 
+		/> </u:search> <u:paneContent> <Text text="Lorem ipsum" /> </u:paneContent> 
+		</u:Shell> -->
 	<Page title="Welcome " enableScrolling="false" navButtonPress="onNavBackPressed"
-		id="id_HomePage">
+		id="id_HomePage" showHeader="false">
+		
 		<content>
 			<!-- <l:VerticalLayout width="100%"> <l:content> <Panel> <headerToolbar> 
 				<Toolbar> <Title level="H2" text="Upper left" /> </Toolbar> </headerToolbar> 
@@ -30,42 +20,42 @@
 			<VBox width="100%" height="100%" justifyContent="Center"
 				alignItems="Center">
 				<HBox alignItems="Center" id="tileContainer">
-				<items>
-					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
-						header="Courses" subheader="View My Course" frameType="OneByOne"
-						press="onPressCourse">
-						<tileContent>
-							<TileContent footer="Course Finished">
-								<content>
-									<NumericContent value="15" icon="sap-icon://study-leave" />
-								</content>
-							</TileContent>
-						</tileContent>
-					</GenericTile>
-				
-					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
-						header="Ranking" subheader="View My Ranking" frameType="OneByOne"
-						press="onPressRanking">
-						<tileContent>
-							<TileContent footer="position in ranking">
-								<content>
-									<NumericContent value="8" icon="sap-icon://competitor" />
-								</content>
-							</TileContent>
-						</tileContent>
-					</GenericTile>
-			
-					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
-						header="Points" subheader="View My Points" frameType="OneByOne"
-						press="press">
-						<tileContent>
-							<TileContent footer="Points Finished">
-								<content>
-									<NumericContent value="25" icon="sap-icon://leads" />
-								</content>
-							</TileContent>
-						</tileContent>
-					</GenericTile>
+					<items>
+						<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+							header="Courses" subheader="View My Course" frameType="OneByOne"
+							press="onPressCourse">
+							<tileContent>
+								<TileContent footer="Course Finished">
+									<content>
+										<NumericContent value="15" icon="sap-icon://study-leave" />
+									</content>
+								</TileContent>
+							</tileContent>
+						</GenericTile>
+
+						<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+							header="Ranking" subheader="View My Ranking" frameType="OneByOne"
+							press="onPressRanking">
+							<tileContent>
+								<TileContent footer="position in ranking">
+									<content>
+										<NumericContent value="8" icon="sap-icon://competitor" />
+									</content>
+								</TileContent>
+							</tileContent>
+						</GenericTile>
+
+						<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+							header="Points" subheader="View My Points" frameType="OneByOne"
+							press="press">
+							<tileContent>
+								<TileContent footer="Points Finished">
+									<content>
+										<NumericContent value="25" icon="sap-icon://leads" />
+									</content>
+								</TileContent>
+							</tileContent>
+						</GenericTile>
 					</items>
 				</HBox>
 			</VBox>
