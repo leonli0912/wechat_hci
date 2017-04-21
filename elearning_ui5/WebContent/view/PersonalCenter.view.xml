@@ -36,7 +36,7 @@
 		color:#fafafa;
 		}
 	</html:style>
-	<Page title="{wi18n>PERSONAL_CENTER}" showNavButton="true"
+	<Page title="Personal Information" showNavButton="true"
 		navButtonPress="onButtonPress">
 
 		<content>
@@ -53,12 +53,12 @@
 									class="sapAuthPotraitImage portraitImage">
 								</Image>
 
-								<Label text="{/wechatUserName}" class="nickNameUI"></Label>
+<!-- 								<Label text="(/wechatUserName}" class="nickNameUI"></Label> -->
 							</VBox>
 						</items>
 					</FlexBox>
 				</Panel>
-				<List>
+				<!-- <List>
 					<StandardListItem title="{wi18n>CANDIDATE_LIST}"
 						type="Navigation" press="candidateListPress" />
 					<StandardListItem title="{wi18n>PERSONAL_INFORMATION_MODIFY}"
@@ -67,8 +67,16 @@
 						type="Navigation" press="applyHistory" />
 					<StandardListItem title="{wi18n>RESUME_CHANGE_HISTORY}"
 						type="Navigation" press="resumeChangeHistory" />
-					<!-- <StandardListItem title="{wi18n>MY_INTERVIEW}" type="Navigation" 
-						press="viewInterviewInfo" /> -->
+					<StandardListItem title="{wi18n>MY_INTERVIEW}" type="Navigation" 
+						press="viewInterviewInfo" />
+				</List> -->
+				<List>
+					<StandardListItem title="Name"
+						 info= "Test Name" />
+					<StandardListItem title="Phone"
+						 info= "Test Phone" />
+					<StandardListItem title="Email"
+						 info= "Test Email" />
 				</List>
 			</VBox>
 		</content>
