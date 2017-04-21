@@ -58,5 +58,11 @@
         "Revenue": 3308333.872944,
         "Cost": 611658.59,
         "Consumption": 538515.47632832
+    },    
+    {
+        "Store Name": "Guangming",
+        "Revenue": 5308555.8944,
+        "Cost": 621658.59,
+        "Consumption": 558515.47632832
     }]
 }

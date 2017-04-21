@@ -5,7 +5,7 @@ sap.ui.define(["elearning_ui5/src/js/format/CustomerFormat",'sap/ui/core/mvc/Con
         // set explored app's demo model on this sample
 
         
-        var oVizFrame = this.oVizFrame = this.getView().byId("idVizFrame");
+/*        var oVizFrame = this.oVizFrame = this.getView().byId("idVizFrame");
         oVizFrame.setVizProperties({
             plotArea: {
                 dataLabel: {
@@ -30,11 +30,25 @@ sap.ui.define(["elearning_ui5/src/js/format/CustomerFormat",'sap/ui/core/mvc/Con
                 visible: false,
                 text: 'Revenue by City and Store Name'
             }
-        });
+        });*/
         var dataModel = new sap.ui.model.json.JSONModel("./model/medium.json");
-        oVizFrame.setModel(dataModel);
+        this.getView().setModel(dataModel);
         
 
+	},
+	
+	onListUpdateFinished:function(oEvent){
+		var oList = this.byId("RankingList");
+		var oItems = oList.getItems();
+		
+		oItems.forEach(function(item,index,array){
+			item.mAggregations.content[0].mAggregations.items[0].mAggregations.items[0].mProperties.text = index + 1;
+			
+		});
+		/*for(var oItem in oItems){
+			oItem.mAggregations.content[0].mAggregations.items[0].mAggregations.items[0].mProperties.text=index;
+			index = index+1;
+		}*/
 	}
 	
 });

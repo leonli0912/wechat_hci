@@ -1,8 +1,8 @@
 <mvc:View controllerName="elearning_ui5.controller.Ranking"
 	xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:mvc="sap.ui.core.mvc"
 	xmlns:u="sap.ui.unified" xmlns="sap.m" xmlns:html="http://www.w3.org/1999/xhtml"
-	xmlns:my="elearning_ui5.src.js" xmlns:viz="sap.viz.ui5.controls" xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
-    xmlns:viz.data="sap.viz.ui5.data">
+	xmlns:my="elearning_ui5.src.js" xmlns:viz="sap.viz.ui5.controls"
+	xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds" xmlns:viz.data="sap.viz.ui5.data">
 	<html:style>
 		.iconSizeSmall{
 		font-size:0.75rem;
@@ -14,7 +14,8 @@
 		color:#00679e;
 		}
 		.infoLabel{
-		/* color:#009de0; */
+		/*
+		color:#009de0; */
 		max-width:10rem;
 		}
 		.infoLabel{
@@ -22,10 +23,11 @@
 		margin-top: 0.25rem;
 		}
 		.jobList{
-		padding-bottom:3rem;
+		padding-bottom:9rem;
 		}
 
-		.jobFilterIcon .sapMBtnIcon{
+		.jobFilterIcon
+		.sapMBtnIcon{
 		color:#666 !important;
 		}
 
@@ -38,8 +40,16 @@
 		}
 
 		.jobFacetFilter .sapMTB-Info-CTX .sapMText{
-		color: #f1f1f1;
+		color:
+		#f1f1f1;
 		font-size: 0.75rem;
+		}
+		.rankingLabel {
+		font-size: 2rem;
+		max-width: 9rem;
+		}
+		.score {
+		justifyContent:"End"
 		}
 	</html:style>
 	<Page title="{wi18n>JOB_LIST_PAGE_TITLE}" showHeader="false">
@@ -60,31 +70,61 @@
 					</FacetFilterList>
 				</my:lists>
 			</my:ExtendFacetFilter>
-			 <viz:VizFrame id="idVizFrame" uiConfig="{applicationSet:'fiori'}"
-                height='100%' width="100%" vizType='bar'>
-                <viz:dataset>
-                    <viz.data:FlattenedDataset data="{/milk}">
-                        <viz.data:dimensions>
-                            <viz.data:DimensionDefinition name="Store Name"
-                                value="{Store Name}" />
-                        </viz.data:dimensions>
-                        <viz.data:measures>
-                            <viz.data:MeasureDefinition name="Revenue"
-                                value="{Revenue}" />
-                            <viz.data:MeasureDefinition name="Cost"
-                                value="{Cost}" />
-                        </viz.data:measures>
-                    </viz.data:FlattenedDataset>
-                </viz:dataset>
- 
-                <viz:feeds>
-                    <viz.feeds:FeedItem id='valueAxisFeed' uid="valueAxis" type="Measure"
-                        values="Revenue" />
-                    <viz.feeds:FeedItem uid="categoryAxis" type="Dimension"
-                        values="Store Name" />
-                </viz:feeds>
-            </viz:VizFrame>
-			
+			<!-- <viz:VizFrame id="idVizFrame" uiConfig="{applicationSet:'fiori'}" 
+				height='100%' width="100%" vizType='bar'> <viz:dataset> <viz.data:FlattenedDataset 
+				data="{/milk}"> <viz.data:dimensions> <viz.data:DimensionDefinition name="Store 
+				Name" value="{Store Name}" /> </viz.data:dimensions> <viz.data:measures> 
+				<viz.data:MeasureDefinition name="Revenue" value="{Revenue}" /> <viz.data:MeasureDefinition 
+				name="Cost" value="{Cost}" /> </viz.data:measures> </viz.data:FlattenedDataset> 
+				</viz:dataset> <viz:feeds> <viz.feeds:FeedItem id='valueAxisFeed' uid="valueAxis" 
+				type="Measure" values="Revenue" /> <viz.feeds:FeedItem uid="categoryAxis" 
+				type="Dimension" values="Store Name" /> </viz:feeds> </viz:VizFrame> -->
+			<my:JSONList id="RankingList" noDataText="{wi18n>JOB_LIST_NO_DATA}"
+				items="{
+						path: '/milk'
+ 					}" growing="true"
+				growingScrollToLoad="false" growingThreshold="10" totalCount="{/count}"
+				enableBusyIndicator="true" updateStarted="listUploadStart" updateFinished="onListUpdateFinished">
+				<my:headerToolbar>
+					<Toolbar>
+						<Title text="JOB_LIST_TITLE" level="H2" />
+						<ToolbarSpacer />
+					</Toolbar>
+				</my:headerToolbar>
+				<CustomListItem type="Navigation" press="onPressItem">
+					<content>
+						<HBox>
+							<FlexBox class="sapMLIBContent">
+								<Label text="No.1" width="100%"
+									class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom rankingLabel" />
+								<core:Icon size="2rem" src="sap-icon://attachment-photo"
+									class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom" />
+								<Label text="{Store Name}" width="100%"
+									class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom rankingLabel" />
+							</FlexBox>
+							<FlexBox justifyContent="End">
+
+								<Label text="{Revenue}"
+									class="sapUiSmallMarginTopBottom rankingLabel sapUiSmallMarginEnd" />
+
+
+							</FlexBox>
+						</HBox>
+						<!-- <FlexBox alignItems="Start" justifyContent="SpaceBetween" class="sapUiTinyMarginTop"> 
+							<items> <HBox justifyContent="Center" alignItems="Center"> <core:Icon src="sap-icon://map" 
+							class="iconSizeSmall sapUiSmallMarginBegin " color="#009de0"> </core:Icon> 
+							<Label text="{componentID}" class="customSmallMarginLeft infoLabel" width="100%" 
+							/> </HBox> <HBox justifyContent="Center" alignItems="Center"> <core:Icon 
+							src="sap-icon://create-entry-time" class="iconSizeSmall sapUiSmallMarginBegin" 
+							color="#009de0"> </core:Icon> <Label text="{path:'formattedRevisionDate',formatter:'.dateFormat'}" 
+							class="customSmallMarginLeft infoLabel" width="100%" /> </HBox> </items> 
+							</FlexBox> -->
+
+					</content>
+				</CustomListItem>
+
+			</my:JSONList>
+
 		</content>
 	</Page>
 </mvc:View>
