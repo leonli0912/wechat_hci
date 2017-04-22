@@ -47,7 +47,7 @@
 
 						<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
 							header="Points" subheader="View My Points" frameType="OneByOne"
-							press="press">
+							press="onPressPoints">
 							<tileContent>
 								<TileContent footer="Points Finished">
 									<content>

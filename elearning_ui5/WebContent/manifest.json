@@ -50,6 +50,11 @@
 			    	"pattern":"personalCenter",
 			        "name":"personalCenter",
 			        "target":"personalCenter"
+			    },
+			    {
+			    	"pattern":"points",
+			        "name":"points",
+			        "target":"points"
 			    }
               
             ], 
@@ -77,6 +82,10 @@
                 },
                 "personalCenter":{
                     "viewName": "PersonalCenter", 
+                    "viewLevel": 1
+                },
+                "points":{
+                    "viewName": "Points", 
                     "viewLevel": 1
                 }
               
