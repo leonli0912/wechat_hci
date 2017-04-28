@@ -23,7 +23,7 @@ sap.ui.jsview("elearning_ui5.view.Login", {
                 justifyContent: sap.m.FlexJustifyContent.SpaceAround,
                 items: [
                     new sap.m.Text({
-                        text: oBundle.getText("SAP_HANA_TITLE"),
+                        text: "Cloud HR",
                         design: sap.m.LabelDesign.Bold
                     }).addStyleClass("login_title"),
                     new sap.m.Text({
@@ -138,16 +138,17 @@ sap.ui.jsview("elearning_ui5.view.Login", {
         }
 
         function getUIBox() {
+        	
             var box = new sap.m.FlexBox({
                 alignItems: sap.m.FlexAlignItems.Stretch,
                 justifyContent: sap.m.FlexJustifyContent.SpaceAround,
                 items: [
                     new sap.m.Label({
-                        text: "SAP_HANA_TITLE",
+                        text: "Cloud HR",
                         design: sap.m.LabelDesign.Bold
                     }).addStyleClass("login_title"),
                     new sap.m.Label({
-                        text: "LOGON_TITLE",
+                        text: "Logon",
                         design: sap.m.LabelDesign.Standard
                     }).addStyleClass("login_subtitle"),
 /*                    new sap.ui.layout.HorizontalLayout({
@@ -167,17 +168,17 @@ sap.ui.jsview("elearning_ui5.view.Login", {
                         ]
                     }),*/
                     new sap.m.Input({
-                        id: "username",
-                        placeholder: "USERNAME_TEXT",
+                		id:oController.createId("id_username"),
+                        placeholder: "USERNAME",
                     }).addStyleClass("login_username"),
                     new sap.m.Input({
-                        id: "password",
-                        type: sap.m.InputType.Password,
-                        placeholder: "PASSWORD_TEXT",
+                		id:oController.createId("id_password"),
+                		type: sap.m.InputType.Password,
+                        placeholder: "PASSWORD",
                     }).addStyleClass("login_password"),
                     new sap.m.Button({
                         id: "logon_button",
-                        text: "LOGON_BUTTON_TEXT",
+                        text: "LOGON",
                         type: sap.m.ButtonType.Emphasized,
                         press: [oController.onPressLogon, oController]
                     }).addStyleClass("sapMLabelBold").setWidth("100%"),
