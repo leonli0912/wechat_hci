@@ -31,7 +31,15 @@
 
 		var componentContainer = new sap.ui.core.ComponentContainer({});
 		componentContainer.setComponent(component);
-
+		
+		var logonButton = new sap.ui.unified.ShellHeadItem({
+			icon : "sap-icon://log",
+			press : function() {
+				var oRouter = component.getRouter();
+				oRouter.navTo("logon", true);
+			}
+		});
+		
 		var personalCenterButton = new sap.ui.unified.ShellHeadItem({
 			icon : "sap-icon://person-placeholder",
 			press : function() {
@@ -42,7 +50,7 @@
 
 		var oShell = new sap.ui.unified.Shell("mainShell", {
 			icon : "src/img/SAPLogo.png",
-			headEndItems : [ personalCenterButton ],
+			headEndItems : [ logonButton,personalCenterButton ],
 			content : componentContainer
 		}).placeAt("content");
 

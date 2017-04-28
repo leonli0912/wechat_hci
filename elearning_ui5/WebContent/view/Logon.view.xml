@@ -11,7 +11,7 @@
 		align-items: center;
 		justify-content: center;
 		}
-		
+
 		.login_box {
 		padding: 10% 37% 2rem 37%;
 		transition: padding 1s;
@@ -19,30 +19,29 @@
 	</html:style>
 	<Page class="myLoginPage" showHeader="false" enableScrolling="false">
 		<content>
-			<Panel width="100%" height="100%" class="sapUiSmallPadding" id="authPanel">
-				<HBox alignItems="Center" justifyContent="Center">
-					<Image id="vendorIcon" densityAware="false" src="" width="5rem"
-						class="sapAuthPotraitImage">
-					</Image>
-				</HBox>
-				<VBox class="login_box">
-					<Input id="username" type="text" class="sapUiSmallMarginBottom"
-						placeholder="USERNAME" />
-					<Input id="password" type="Password" class="sapUiSmallMarginBottom"
-						placeholder="PASSWORD" />
-					<!-- <FlexBox alignItems="Center" justifyContent="Start"> <items> <Input 
-						id="verifyCode" width="50%" type="text" placeholder="{wi18n>WEB_AUTH_VERIFYCODE}" 
-						visible="false" /> <Image id="verifyCodeImg" src="{/verifyCodeUrl}" class="sapAuthPotraitImage" 
-						visible="false" press="getVerifyCode" /> </items> </FlexBox> <HBox id="dpcsAgreed" 
-						alignItems="Center" justifyContent="Start" class="sapUiTinyMarginTop"> <CheckBox 
-						id="aggreementCheck" text="{wi18n>WEB_AUTH_AGREEMENT}" selected="false" class="sapUiSmallMarginEnd" 
-						/> <Link class="statementLabel" press=".showAggreement" text="{wi18n>WEB_AUTH_AGREEMENT_LINK}" 
-						/> </HBox> -->
-					<Button width="100%" class="sapUiSmallMarginTop commonBtn"
-						press="onPressLogon" text="Logon"></Button>
-				</VBox>
-
-			</Panel>
+			<!-- <Panel width="100%" height="100%" class="sapUiSmallPadding" id="authPanel"> 
+				<HBox alignItems="Center" justifyContent="Center"> <Image id="vendorIcon" 
+				densityAware="false" src="" width="5rem" class="sapAuthPotraitImage"> </Image> 
+				</HBox> <VBox class="login_box"> <Input id="username" type="text" class="sapUiSmallMarginBottom" 
+				placeholder="USERNAME" /> <Input id="password" type="Password" class="sapUiSmallMarginBottom" 
+				placeholder="PASSWORD" /> <FlexBox alignItems="Center" justifyContent="Start"> 
+				<items> <Input id="verifyCode" width="50%" type="text" placeholder="{wi18n>WEB_AUTH_VERIFYCODE}" 
+				visible="false" /> <Image id="verifyCodeImg" src="{/verifyCodeUrl}" class="sapAuthPotraitImage" 
+				visible="false" press="getVerifyCode" /> </items> </FlexBox> <HBox id="dpcsAgreed" 
+				alignItems="Center" justifyContent="Start" class="sapUiTinyMarginTop"> <CheckBox 
+				id="aggreementCheck" text="{wi18n>WEB_AUTH_AGREEMENT}" selected="false" class="sapUiSmallMarginEnd" 
+				/> <Link class="statementLabel" press=".showAggreement" text="{wi18n>WEB_AUTH_AGREEMENT_LINK}" 
+				/> </HBox> <Button width="100%" class="sapUiSmallMarginTop commonBtn" press="onPressLogon" 
+				text="Logon"></Button> </VBox> </Panel> -->
+			<FlexBox alignItems="Stretch" justifyContent="SpaceAround"
+				class="login_box">
+				<Label text="Cloud HR" design="Bold" class="login_title"></Label>
+				<Label text="Logon" design="Standard" class="login_subtitle"></Label>
+				<Input id="id_username" placeholder="USERNAME" class="login_username"></Input>
+				<Input id="id_password" placeholder="PASSWORD" class="login_password"></Input>
+				<Button id="logon_button" text="LOGON" type="Emphasized"
+					press="onPressLogon" class="sapMLabelBold" width="100%"></Button>
+			</FlexBox>
 		</content>
 	</Page>
 </mvc:View>

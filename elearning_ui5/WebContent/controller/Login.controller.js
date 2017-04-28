@@ -54,7 +54,14 @@ sap.ui.define([ "elearning_ui5/src/js/format/CustomerFormat",'sap/ui/core/mvc/Co
 	                success: function(text) {
 	                	that.getView().setBusy(false);
 	                	if(that._username===text){
-	                		that.oRouter.navTo("home");
+	                		var oUser = sap.ui.getCore().getModel("user");
+	            			if(oName=="admin"){
+	            				oUser.oData.role ="Super";
+	            			}
+	            			oUser.oData.login = true;
+	            			oUser = {user:text};
+	            			sap.ui.getCore().setModel(oUser,"user");
+	                		that.oRouter.navTo("appHome");
 	                		console.log("success...");
 	                	}else{
 	                		console.log("fail to logon...");
@@ -65,8 +72,5 @@ sap.ui.define([ "elearning_ui5/src/js/format/CustomerFormat",'sap/ui/core/mvc/Co
 	                        that.getView().setBusy(false);
 	                    }
 	                });
-			 
-
-
 		}
 	});})

@@ -2,14 +2,18 @@
 //jQuery.sap.require("releaseManagement.util.Controller");
 
 sap.ui.controller("elearning_ui5.controller.Tile", {
-	oCount : 0,
+	TOKEN_URL:"/clouldhr_server/SFLearningToken",
+	_oToken:null,
+	oRouter:null,
 	onInit : function() {
 		
 		var Windowwidth = window.screen.availWidth;
 		// init router
-		var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-		oRouter.getRoute("appHome").attachPatternMatched(
+		this.oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+		
+		this.oRouter.getRoute("appHome").attachPatternMatched(
 				this._onPatternMatched, this);
+		
 
 	},
 	onBeforeRendering : function() {
@@ -39,12 +43,6 @@ sap.ui.controller("elearning_ui5.controller.Tile", {
 		oRouter.navTo("user",{userId:'u01'});
 	},
 	
-	onShowSplitScreen : function(evt) {
-		var oSource = evt.getSource();
-		var that = oSource.getParent().getParent().getParent();
-		var oRouter = sap.ui.core.UIComponent.getRouterFor(that);
-		oRouter.navTo("split");
-	},
 	handleLogoffPress : function(evt) {
 		var oUser = sap.ui.getCore().getModel("user");
 		oUser.login = false;
@@ -56,18 +54,38 @@ sap.ui.controller("elearning_ui5.controller.Tile", {
 		var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
 		oRouter.navTo("login");
 	},
-	onPressPersonal : function(evt) {
-		var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-		oRouter.navTo("person");
-	},
-
-	onPressSplitList : function(evt) {
-		var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-		oRouter.navTo("splitapp");
-	},
 
 	_onPatternMatched : function() {
-
+		var userModel = sap.ui.getCore().getModel("user");
+		
+		var that = this;
+		if(!userModel){
+			this.oRouter.navTo("logon");
+		}else{
+			// GET TOKEN
+			this.getView().setBusy(false);
+			that = this;
+			$.ajax({
+	            type: "GET",
+	            dataType: 'text',
+	            url: this.TOKEN_URL,
+	            contentType: "application/json",
+//	            headers: {
+//	                "Authorization": "Basic amlheGluZzpjNjdmODBlODJlMWFkOGIzZjc0OGU1ODQ2YWQ5ODQ1Mzc2ZGU5NjU0ODNjNjM5NTAzMDZiMTAwYjdlMDhkMzFi",
+//	              },
+	            
+	            success: function(text) {
+	            	that.getView().setBusy(false);
+	            	that._oToken = text;
+	                console.log("success...");
+	            },
+	            error: function(e) {
+	                    console.log(e.message);
+	                    that.getView().setBusy(false);
+	                }
+	            });	
+		}
+		
 	},
 	onPressCalendar : function(evt) {
 
