@@ -13,7 +13,7 @@ sap.ui.define([ "elearning_ui5/src/js/format/CustomerFormat",'sap/ui/core/mvc/Co
 					this._onPatternMatched, this);
 			if(this._logonToken){
 				
-				this.oRouter.navTo("home");
+				this.oRouter.navTo("appHome");
 			}
 											
 		},

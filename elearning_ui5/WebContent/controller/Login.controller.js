@@ -6,12 +6,14 @@ sap.ui.define([ "elearning_ui5/src/js/format/CustomerFormat",'sap/ui/core/mvc/Co
     	_username:null,
     	_password:null,
 		oRouter:null,
-		
+		oShell:null,
 		onInit : function() {
+			this.oShell = sap.ui.getCore().byId("mainShell");
+			this.oShell.setHeaderVisible(false);
 			this.oRouter = sap.ui.core.UIComponent.getRouterFor(this);
 			if(this._logonToken){
-				
-				this.oRouter.navTo("home");
+				this.oShell.setHeaderVisible(true);
+				this.oRouter.navTo("appHome");
 			}
 											
 		},
@@ -55,13 +57,10 @@ sap.ui.define([ "elearning_ui5/src/js/format/CustomerFormat",'sap/ui/core/mvc/Co
 	                	that.getView().setBusy(false);
 	                	if(that._username===text){
 	                		var oUser = sap.ui.getCore().getModel("user");
-	            			if(oName=="admin"){
-	            				oUser.oData.role ="Super";
-	            			}
-	            			oUser.oData.login = true;
 	            			oUser = {user:text};
 	            			sap.ui.getCore().setModel(oUser,"user");
 	                		that.oRouter.navTo("appHome");
+	                		this.oShell.setHeaderVisible(true);
 	                		console.log("success...");
 	                	}else{
 	                		console.log("fail to logon...");

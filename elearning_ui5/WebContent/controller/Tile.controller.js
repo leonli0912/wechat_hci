@@ -62,8 +62,11 @@ sap.ui.controller("elearning_ui5.controller.Tile", {
 		if(!userModel){
 			this.oRouter.navTo("logon");
 		}else{
+			// check token avoid ajax every time open this view
+			var oToken_model = sap.ui.getCore().getModel("token");
+			if(!oToken_model){
 			// GET TOKEN
-			this.getView().setBusy(false);
+			this.getView().setBusy(true);
 			that = this;
 			$.ajax({
 	            type: "GET",
@@ -76,7 +79,8 @@ sap.ui.controller("elearning_ui5.controller.Tile", {
 	            
 	            success: function(text) {
 	            	that.getView().setBusy(false);
-	            	that._oToken = text;
+	            	that._oToken = text.access_token;
+	            	sap.ui.getCore().setModel(text,"token");
 	                console.log("success...");
 	            },
 	            error: function(e) {
@@ -84,6 +88,7 @@ sap.ui.controller("elearning_ui5.controller.Tile", {
 	                    that.getView().setBusy(false);
 	                }
 	            });	
+			}
 		}
 		
 	},
