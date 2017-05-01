@@ -1,20 +1,18 @@
 jQuery.sap.require("sap.m.MessageBox");
 sap.ui.define([ "elearning_ui5/src/js/format/CustomerFormat",'sap/ui/core/mvc/Controller' ],function(CustomerFormat, Controller) {
 	return Controller.extend("elearning_ui5.controller.Login",{
-    	LOGIN_URL:"/clouldhr_server/UserLogin",
+    	LOGIN_URL:"clouldhr_server/UserLogin",
     	USERINFO_URL:"/hcp_learning/odatav4/searchStudent/v1/Students?$filter=criteria/learnerID eq %27eddiy%27",
     	_username:null,
     	_password:null,
 		oRouter:null,
 		oShell:null,
 		onInit : function() {
-			this.oShell = sap.ui.getCore().byId("mainShell");
-			this.oShell.setHeaderVisible(false);
+			
 			this.oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-			if(this._logonToken){
-				this.oShell.setHeaderVisible(true);
-				this.oRouter.navTo("appHome");
-			}
+			this.oRouter.getRoute("logon").attachPatternMatched(
+					this._onPatternMatched, this);
+
 											
 		},
 
@@ -71,5 +69,21 @@ sap.ui.define([ "elearning_ui5/src/js/format/CustomerFormat",'sap/ui/core/mvc/Co
 	                        that.getView().setBusy(false);
 	                    }
 	                });
+		},
+		_onPatternMatched:function(){
+		/*	this.oShell = sap.ui.getCore().byId("mainShell");
+			this.oShell.setHeaderVisible(false);
+			if(this._logonToken){
+				this.oShell.setHeaderVisible(true);
+				this.oRouter.navTo("appHome");
+			}*/
+		},
+		onAfterRendering:function(){
+			this.oShell = sap.ui.getCore().byId("mainShell");
+			this.oShell.setHeaderVisible(false);
+			if(this._logonToken){
+				this.oShell.setHeaderVisible(true);
+				this.oRouter.navTo("appHome");
+			}
 		}
 	});})
