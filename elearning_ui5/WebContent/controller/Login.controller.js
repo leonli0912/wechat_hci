@@ -1,7 +1,7 @@
 jQuery.sap.require("sap.m.MessageBox");
 sap.ui.define([ "elearning_ui5/src/js/format/CustomerFormat",'sap/ui/core/mvc/Controller' ],function(CustomerFormat, Controller) {
 	return Controller.extend("elearning_ui5.controller.Login",{
-    	LOGIN_URL:"clouldhr_server/UserLogin",
+    	LOGIN_URL:"/clouldhr_server/UserLogin",
     	USERINFO_URL:"/hcp_learning/odatav4/searchStudent/v1/Students?$filter=criteria/learnerID eq %27eddiy%27",
     	_username:null,
     	_password:null,
@@ -53,16 +53,14 @@ sap.ui.define([ "elearning_ui5/src/js/format/CustomerFormat",'sap/ui/core/mvc/Co
 	                data:JSON.stringify(bodydata),
 	                success: function(text) {
 	                	that.getView().setBusy(false);
-	                	if(that._username===text){
-	                		var oUser = sap.ui.getCore().getModel("user");
-	            			oUser = {user:text};
-	            			sap.ui.getCore().setModel(oUser,"user");
+	                	
+	                		var oTokenModel = sap.ui.getCore().getModel("user");
+	            			oUoTokenModel = {token:text};
+	            			sap.ui.getCore().setModel(oUoTokenModel,"token");
 	                		that.oRouter.navTo("appHome");
-	                		this.oShell.setHeaderVisible(true);
+	                		that.oShell.setHeaderVisible(true);
 	                		console.log("success...");
-	                	}else{
-	                		console.log("fail to logon...");
-	                	}
+	                	
 	                    },
 	                    error: function(e) {
 	                        console.log(e.message);

@@ -56,7 +56,7 @@ sap.ui.controller("elearning_ui5.controller.Tile", {
 	},
 
 	_onPatternMatched : function() {
-		var userModel = sap.ui.getCore().getModel("user");
+		var userModel = sap.ui.getCore().getModel("token");
 		
 		var that = this;
 		if(!userModel){
