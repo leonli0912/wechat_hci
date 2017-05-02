@@ -41,7 +41,7 @@ sap.ui.define(['elearning_ui5/src/js/layout/EmailBindingDialog', 'sap/ui/core/mv
             //this.sServiceUrl = "./hcpserver";
             var recommendModel = new sap.ui.model.json.JSONModel();
             var that = this;
-            var token_json = JSON.parse(sap.ui.getCore().getModel("token").getJSON());
+            var token_json = sap.ui.getCore().getModel("token");
             this._access_token = token_json.access_token;
             this._token_type = token_json.token_type;
 
