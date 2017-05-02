@@ -3,6 +3,7 @@
 
 sap.ui.controller("elearning_ui5.controller.Tile", {
 	TOKEN_URL:"/clouldhr_server/SFLearningToken",
+	SFTOKEN_URL:"/clouldhr_server/SFLearningToken",
 	_oToken:null,
 	oRouter:null,
 	onInit : function() {
@@ -64,8 +65,10 @@ sap.ui.controller("elearning_ui5.controller.Tile", {
 		}else{
 			// check token avoid ajax every time open this view
 			var oToken_model = sap.ui.getCore().getModel("token");
+			var sf_token = sap.ui.getCore().getModel("sf_token");
+			
 			if(!oToken_model){
-			// GET TOKEN
+			// GET LGOIN TOKEN
 			this.getView().setBusy(true);
 			that = this;
 			$.ajax({
@@ -88,7 +91,31 @@ sap.ui.controller("elearning_ui5.controller.Tile", {
 	                    that.getView().setBusy(false);
 	                }
 	            });	
+			};
+			
+			if(!sf_token){
+				// GET SF TOKEN
+				$.ajax({
+		            type: "GET",
+		            dataType: 'json',
+		            url: this.SFTOKEN_URL,
+		            contentType: "application/json",
+		            headers: {
+		                "hrcloud_user_token":oToken_model.token ,
+		              },		            
+		            success: function(json) {
+		            	that.getView().setBusy(false);
+		            	that._oToken = json.access_token;
+		            	sap.ui.getCore().setModel(json,"sf_token");
+		                console.log("success...");
+		            },
+		            error: function(e) {
+		                    console.log(e.message);
+		                    that.getView().setBusy(false);
+		                }
+		            });	
 			}
+			
 		}
 		
 	},
