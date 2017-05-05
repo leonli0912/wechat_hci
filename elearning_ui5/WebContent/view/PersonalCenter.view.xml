@@ -46,13 +46,13 @@
 						height="100%">
 						<items>
 							<VBox justifyContent="Center">
-								<core:Icon id="noPortrait" src="sap-icon://customer"
+								<!-- <core:Icon id="noPortrait" src="sap-icon://customer"
 									size="5rem" class="sapAuthPotraitImage portraitImage" />
-
-								<Image id="portrait" src="{/iconUrl}" width="6rem"
+ -->
+								<Image id="portrait" src="{wechat>/headimgurl}" width="6rem"
 									class="sapAuthPotraitImage portraitImage">
 								</Image>
-
+								
 <!-- 								<Label text="(/wechatUserName}" class="nickNameUI"></Label> -->
 							</VBox>
 						</items>
@@ -72,11 +72,12 @@
 				</List> -->
 				<List>
 					<StandardListItem title="Name"
-						 info= "Test Name" />
+						 info= "{/User_id}" />
 					<StandardListItem title="Phone"
-						 info= "Test Phone" />
+						 info= "{/Mobile}" />
 					<StandardListItem title="Email"
-						 info= "Test Email" />
+						 info= "{/Sf_learning_user}" />
+
 				</List>
 			</VBox>
 		</content>

@@ -25,9 +25,9 @@
 							header="Courses" subheader="View My Course" frameType="OneByOne"
 							press="onPressCourse">
 							<tileContent>
-								<TileContent footer="Course Finished">
+								<TileContent id="id_CourseTile" footer="Course Finished">
 									<content>
-										<NumericContent value="15" icon="sap-icon://study-leave" />
+										<NumericContent id="id_NumericCourse" value="15" icon="sap-icon://study-leave" />
 									</content>
 								</TileContent>
 							</tileContent>

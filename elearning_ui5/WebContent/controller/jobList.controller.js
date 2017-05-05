@@ -3,7 +3,8 @@ sap.ui.define(['elearning_ui5/src/js/layout/EmailBindingDialog', 'sap/ui/core/mv
     var jobList = Controller.extend("elearning_ui5.controller.jobList", {
         SERVICE_URL: "/hcpserver/Products",
         //TOKEN_URL:"/hcp_learning/oauth-api/rest/v1/token",
-        USERINFO_URL: "/hcp_learning/odatav4/public/user/learningHistory/v1/learninghistorys?$filter=criteria/maxNumberToRetrieve eq 10 and criteria/targetUserID eq %27Eddiy%27",
+        //USERINFO_URL: "/hcp_learning/odatav4/public/user/learningHistory/v1/learninghistorys?$filter=criteria/maxNumberToRetrieve eq 10 and criteria/targetUserID eq %27Eddiy%27",
+        LEARNING_URL:"/clouldhr_server/SFLearningHistory",
         _access_token: null,
         _token_type: null,
         _positionBefore: 0,
@@ -41,14 +42,14 @@ sap.ui.define(['elearning_ui5/src/js/layout/EmailBindingDialog', 'sap/ui/core/mv
             //this.sServiceUrl = "./hcpserver";
             var recommendModel = new sap.ui.model.json.JSONModel();
             var that = this;
-            var token_json = sap.ui.getCore().getModel("sf_token");
+           /* var token_json = sap.ui.getCore().getModel("sf_token");
             this._access_token = token_json.access_token;
-            this._token_type = token_json.token_type;
+            this._token_type = token_json.token_type;*/
 
             this._router = sap.ui.core.UIComponent.getRouterFor(this);
 
             var emailBindingDialog = new EmailBindingDialog();
-            var requestBody = this._getFilterRequestBody();
+            //var requestBody = this._getFilterRequestBody();
             this.getView().setBusy(true);
             // HCP DEMO DATA            
             /*            $.ajax({
@@ -71,10 +72,10 @@ sap.ui.define(['elearning_ui5/src/js/layout/EmailBindingDialog', 'sap/ui/core/mv
             $.ajax({
                 type: "GET",
                 dataType: 'json',
-                url: this.USERINFO_URL,
+                url: this.LEARNING_URL,
                 contentType: "application/json",
                 headers: {
-                    "Authorization": that._token_type + " " + that._access_token,
+                    hrcloud_user_token: window.sessionStorage.getItem("login_token"),
                 },
 
                 success: function(json) {

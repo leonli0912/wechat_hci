@@ -1,0 +1,26 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" controllerName="elearning_ui5.controller.Loading"
+	xmlns:custom="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+	xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:l="sap.ui.layout"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<html:style>
+		.myLoginPage {
+		background-image:url('sun_light-wallpaper.jpg');
+		font-weight: bold;
+		background-size: cover;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		}
+
+		.login_box {
+		padding: 10% 37% 2rem 37%;
+		transition: padding 1s;
+		}
+	</html:style>
+	<Page class="myLoginPage" showHeader="false" enableScrolling="false">
+		<content>
+		
+			<Text text="please wait..."></Text>
+		</content>
+	</Page>
+</mvc:View>

@@ -55,7 +55,12 @@
 			    	"pattern":"points",
 			        "name":"points",
 			        "target":"points"
-			    }
+			    },
+			    {
+			    	"pattern":"loading",
+			        "name":"loading",
+			        "target":"loading"
+			    }			    
               
             ], 
             "targets": {
@@ -87,6 +92,10 @@
                 "points":{
                     "viewName": "Points", 
                     "viewLevel": 1
+                },
+                "loading":{
+                    "viewName": "Loading", 
+                    "viewLevel": 1               
                 }
               
             }
