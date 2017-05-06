@@ -7,13 +7,15 @@ sap.ui.define([ "elearning_ui5/src/js/format/CustomerFormat",'sap/ui/core/mvc/Co
 			this.oRouter = sap.ui.core.UIComponent.getRouterFor(this);
 			
 			//GET TOKEN FROM WECHAT
-			var bodydata = {code:"051P02sh12JORw09gbqh1ltQrh1P02sJ"}
+	        var request = this.GetRequest();
+			var code = request["code"];
+			var bodydata = {code:code}
 			this.getView().setBusy(true);
 			var that = this;
 			$.ajax({
 	            type: "POST",
 	            dataType: 'json',
-	            url: this.WECHAT_URL,
+	            url: this.getOwnerComponent().HCP_HOST+this.WECHAT_URL,
 	            contentType: "application/json",
 	            data:JSON.stringify(bodydata),
 //	            headers: {
@@ -31,7 +33,20 @@ sap.ui.define([ "elearning_ui5/src/js/format/CustomerFormat",'sap/ui/core/mvc/Co
 	            	that.oRouter.navTo("logon");
 	            	}
 	            });
-		}	
+		},
+		GetRequest:function() {
+		  	  
+		  	  var url = location.search; //获取url中"?"符后的字串
+		  	   var theRequest = new Object();
+		  	   if (url.indexOf("?") != -1) {
+		  	      var str = url.substr(1);
+		  	      strs = str.split("&");
+		  	      for(var i = 0; i < strs.length; i ++) {
+		  	         theRequest[strs[i].split("=")[0]]=(strs[i].split("=")[1]);
+		  	      }
+		  	   }
+		  	   return theRequest;
+		  	}
 	});
 	
 

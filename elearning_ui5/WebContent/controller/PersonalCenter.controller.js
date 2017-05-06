@@ -25,7 +25,7 @@ sap.ui.define(["elearning_ui5/src/js/format/CustomerFormat", "sap/ui/core/mvc/Co
 			$.ajax({
 	            type: "GET",
 	            dataType: '	json',
-	            url: this.USERINFO_URL,
+	            url: this.getOwnerComponent().HCP_HOST+this.USERINFO_URL,
 	            contentType: "application/json",
 	            headers:{hrcloud_user_token:window.sessionStorage.getItem("login_token")},
 				success:function(json){

@@ -7,7 +7,7 @@ sap.ui.define([ 'sap/ui/core/UIComponent' ], function(UIComponent) {
 		metadata : {
 			manifest : "json"
 		},
-
+		HCP_HOST:"https://hrcservicep1941435989trial.hanatrial.ondemand.com",
 		init : function() {
 			jQuery.sap.require("sap.m.routing.RouteMatchedHandler");
 			// call the init function of the parent

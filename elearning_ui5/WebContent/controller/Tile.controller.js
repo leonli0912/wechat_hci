@@ -5,7 +5,7 @@ sap.ui.controller("elearning_ui5.controller.Tile", {
     USERINFO_URL: "/clouldhr_server/UserInformation/Users",
     WECHAT_URL: "/clouldhr_server/WechatLogin",
     LEARNING_URL: "/clouldhr_server/SFLearningHistory",
-    LEARNING_URL2: "https://hrcservicep1941435989trial.hanatrial.ondemand.com/clouldhr_server/SFLearningHistory",
+    //LEARNING_URL2: "https://hrcservicep1941435989trial.hanatrial.ondemand.com/clouldhr_server/SFLearningHistory",
     oSession_token: null ,
     oRouter: null ,
     onInit: function() {
@@ -17,6 +17,7 @@ sap.ui.controller("elearning_ui5.controller.Tile", {
         this._onPatternMatched, this);
         
         //check login session
+
         this.oSession_token = window.sessionStorage.getItem("login_token");
         
         if (!this.oSession_token) {
@@ -25,6 +26,9 @@ sap.ui.controller("elearning_ui5.controller.Tile", {
         }
     
     },
+    
+    
+  	
     onBeforeRendering: function() {
     
     },
@@ -82,7 +86,7 @@ sap.ui.controller("elearning_ui5.controller.Tile", {
                 $.ajax({
                     type: "GET",
                     dataType: '	json',
-                    url: this.LEARNING_URL,
+                    url: this.getOwnerComponent().HCP_HOST+this.LEARNING_URL,
                     contentType: "application/json",
                     headers: {
                         hrcloud_user_token: this.oSession_token

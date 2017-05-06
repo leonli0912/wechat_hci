@@ -72,7 +72,7 @@ sap.ui.define(['elearning_ui5/src/js/layout/EmailBindingDialog', 'sap/ui/core/mv
             $.ajax({
                 type: "GET",
                 dataType: 'json',
-                url: this.LEARNING_URL,
+                url: this.getOwnerComponent().HCP_HOST+this.LEARNING_URL,
                 contentType: "application/json",
                 headers: {
                     hrcloud_user_token: window.sessionStorage.getItem("login_token"),

@@ -2,7 +2,7 @@ jQuery.sap.require("sap.m.MessageBox");
 sap.ui.define([ "elearning_ui5/src/js/format/CustomerFormat",'sap/ui/core/mvc/Controller' ],function(CustomerFormat, Controller) {
 	return Controller.extend("elearning_ui5.controller.Login",{
     	LOGIN_URL:"/clouldhr_server/UserLogin",
-    	LOGIN_URL2:"https://hrcservicep1941435989trial.hanatrial.ondemand.com/clouldhr_server/UserLogin",
+    	//LOGIN_URL2:"https://hrcservicep1941435989trial.hanatrial.ondemand.com/clouldhr_server/UserLogin",
     	USERINFO_URL:"/hcp_learning/odatav4/searchStudent/v1/Students?$filter=criteria/learnerID eq %27eddiy%27",
     	_username:null,
     	_password:null,
@@ -46,7 +46,7 @@ sap.ui.define([ "elearning_ui5/src/js/format/CustomerFormat",'sap/ui/core/mvc/Co
 			 $.ajax({
 	                type: "POST",
 	                dataType: 'json',
-	                url: this.LOGIN_URL2,
+	                url: this.getOwnerComponent().HCP_HOST+this.LOGIN_URL,
 	                contentType: "application/json",
 //	                headers: {
 //	                    "Authorization": "Basic amlheGluZzpjNjdmODBlODJlMWFkOGIzZjc0OGU1ODQ2YWQ5ODQ1Mzc2ZGU5NjU0ODNjNjM5NTAzMDZiMTAwYjdlMDhkMzFi",
@@ -54,7 +54,7 @@ sap.ui.define([ "elearning_ui5/src/js/format/CustomerFormat",'sap/ui/core/mvc/Co
 //	                },
 	                data:JSON.stringify(bodydata),
 	                success: function(json) {
-	                	json.setHeader("Access-Control-Allow-Origin", "*");
+	                	
 	                	that.getView().setBusy(false);              	
 	                		
 	            			window.sessionStorage.setItem("login_token",json.access_token[0]);
