@@ -29,7 +29,11 @@
 }
 .tileLayout {
 	float: left;
+
 } 
+.tileLayout:active{
+	background-color: #00679e
+}
 .sapUiUfdShellAnim .sapUiUfdShellHeadCenter.sapUiUfdShellAnim {
 	-webkit-transition-duration: 200ms;
     transition-duration: 200ms;
@@ -41,4 +45,17 @@
     transition-property: left,right;
     -moz-transition-property: left,right;
     z-index: 0;	
+}
+sapUiSmallMarginBegin sapUiSmallMarginTopBottom scoreVbox{
+	width:14rem;
+}
+sapUiSmallMarginBegin sapUiSmallMarginTopBottom scoreIcon{
+	position:fixed;
+	right:5rem;
+	
+}
+scoreText{
+	font-size:2rem;
+    position:fixed;
+	right:2rem;
 }

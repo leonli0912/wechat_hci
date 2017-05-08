@@ -53,7 +53,7 @@
 	<Page title="Points" id="PointsDetailPage" class="PointsInfoPage"
 		showNavButton="true" navButtonPress="onButtonPress">
 
-		<my:JSONList class="jobList" id="pointsList" noDataText="{wi18n>JOB_LIST_NO_DATA}"
+		<my:JSONList id="pointsList" noDataText="{wi18n>JOB_LIST_NO_DATA}"
 			items="{
 						path: '/'
  					}" totalCount="{/count}"
@@ -64,51 +64,49 @@
 					<ToolbarSpacer />
 				</Toolbar>
 			</my:headerToolbar>
-			<CustomListItem type="Navigation" press="onPressItem">
-				<content>
-					<VBox width="100%" height="5rem" class="sapUiSmallPaddingTop">
-						<FlexBox alignItems="Center" justifyContent="SpaceBetween"
-							class="sapUiSmallMarginTop">
-							<items>
-								<Label text="{Title}" class="sapUiSmallMarginBegin colorSetBlue"
-									width="100%" design="Bold" />
-								<Label text="{Course_type}" class="sapUiLargeMarginEnd"
-									width="100%" />
-							</items>
-						</FlexBox>
-						<FlexBox alignItems="Start" justifyContent="SpaceBetween"
-							class="sapUiTinyMarginTop">
-							<items>
-								<HBox justifyContent="Center" alignItems="Center">
-									<core:Icon src="sap-icon://map" class="iconSizeSmall sapUiSmallMarginBegin "
-										color="#009de0">
-									</core:Icon>
-									<Label text="{Course_id}" class="customSmallMarginLeft infoLabel"
-										width="100%" />
-								</HBox>
-								<HBox justifyContent="Center" alignItems="Center">
-									<core:Icon src="sap-icon://create-entry-time" class="iconSizeSmall sapUiSmallMarginBegin"
-										color="#009de0">
-									</core:Icon>
-									<Label text="{Score}" class="customSmallMarginLeft infoLabel"
-										width="100%" />
-								</HBox>
-							</items>
-						</FlexBox>
+			<CustomListItem type="Inactive" press="onPressItem">
+
+				<!-- <VBox width="100%" height="5rem" class="sapUiSmallPaddingTop"> <FlexBox 
+					alignItems="Center" justifyContent="SpaceBetween" class="sapUiSmallMarginTop"> 
+					<items> <Label text="{Title}" class="sapUiSmallMarginBegin colorSetBlue" 
+					width="100%" design="Bold" /> <Label text="{Course_type}" class="sapUiLargeMarginEnd" 
+					width="100%" /> </items> </FlexBox> <FlexBox alignItems="Start" justifyContent="SpaceBetween" 
+					class="sapUiTinyMarginTop"> <items> <HBox justifyContent="Center" alignItems="Center"> 
+					<core:Icon src="sap-icon://map" class="iconSizeSmall sapUiSmallMarginBegin 
+					" color="#009de0"> </core:Icon> <Label text="{Course_id}" class="customSmallMarginLeft 
+					infoLabel" width="100%" /> </HBox> <HBox justifyContent="Center" alignItems="Center"> 
+					<core:Icon src="sap-icon://create-entry-time" class="iconSizeSmall sapUiSmallMarginBegin" 
+					color="#009de0"> </core:Icon> <Label text="{Score}" class="customSmallMarginLeft 
+					infoLabel" width="100%" /> </HBox> </items> </FlexBox> </VBox> -->
+				<HBox width="100%" height="5rem" class="sapUiSmallPaddingTop">
+					<core:Icon size="2rem" src="sap-icon://education"
+						class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom" />
+					<VBox class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom scoreVbox">
+						<Label text="{Title}" />
+						<Label text="{Course_type}" />
 					</VBox>
-				</content>
+					<core:Icon size="2rem" src="sap-icon://badge"
+						class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom scoreIcon" />
+					<Text text="{Score}" class="scoreText"></Text>
+				</HBox>
+				<!-- <HBox> <FlexBox alignItems="Center" justifyContent="SpaceBetween" 
+					class="sapUiSmallMarginTop"> <items> <VBox justifyContent="Center" alignItems="Center"> 
+					<Label text="{Title}" class="sapUiSmallMarginBegin colorSetBlue" width="100%" 
+					design="Bold" /> </VBox> <VBox justifyContent="Center" alignItems="Center"> 
+					<Label text="{Course_type}" class="sapUiLargeMarginEnd" width="100%" /> </VBox> 
+					</items> </FlexBox> <FlexBox alignItems="End" justifyContent="SpaceBetween" 
+					class="sapUiSmallMarginTop"> <items> <HBox> <core:Icon src="sap-icon://create-entry-time" 
+					class="iconSizeSmall sapUiSmallMarginBegin" color="#009de0"> </core:Icon> 
+					</HBox> <HBox> <Label text="{Score}" class="customSmallMarginLeft infoLabel" 
+					width="100%" /> </HBox> </items> </FlexBox> </HBox> -->
+
 			</CustomListItem>
 
 		</my:JSONList>
 
 
-		<Toolbar height="3rem">
-			<Title text="Points Average">
-			</Title>
-		</Toolbar>
-		<Panel class="PointsInfoPanel">
-			<Text text="75" class="sapUiSmallMarginTop">
-			</Text>
-		</Panel>
+		<!-- <Toolbar height="3rem"> <Title text="Points Average"> </Title> </Toolbar> 
+			<Panel class="PointsInfoPanel"> <Text text="75" class="sapUiSmallMarginTop"> 
+			</Text> </Panel> -->
 	</Page>
 </mvc:View>

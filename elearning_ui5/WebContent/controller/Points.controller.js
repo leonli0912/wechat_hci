@@ -6,6 +6,8 @@ sap.ui.define(["elearning_ui5/src/js/format/CustomerFormat", "sap/ui/core/mvc/Co
         	this.oRouter = sap.ui.core.UIComponent.getRouterFor(this);
         	this.getView().setBusy(true);
 			var that = this;
+			if(!this.getOwnerComponent().getModel("points")){
+				
 			$.ajax({
 	            type: "GET",
 	            dataType: 'json',
@@ -30,6 +32,13 @@ sap.ui.define(["elearning_ui5/src/js/format/CustomerFormat", "sap/ui/core/mvc/Co
 	            	that.oRouter.navTo("logon");
 	            	}
 	            });
+			}else{
+				this.getView().setBusy(false);
+	            var oPoints = this.getOwnerComponent().getModel("points");
+	            var oPointsModel = new sap.ui.model.json.JSONModel();
+	            oPointsModel.setData(oPoints);
+	            this.getView().setModel(oPointsModel);
+			}
         },
         onDataReceived: function(sChannel, sEvent, oData) {
 

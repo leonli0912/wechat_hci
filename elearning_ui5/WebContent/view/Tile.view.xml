@@ -9,7 +9,7 @@
 		Mustermann" press="onPressUser" /> </u:user> <u:search> <SearchField search="handleSearchPressed" 
 		/> </u:search> <u:paneContent> <Text text="Lorem ipsum" /> </u:paneContent> 
 		</u:Shell> -->
-	<Page title="Welcome " enableScrolling="false" navButtonPress="onNavBackPressed"
+	<Page title="Welcome " enableScrolling="true" navButtonPress="onNavBackPressed"
 		id="id_HomePage" showHeader="false">
 
 		<content>
@@ -87,11 +87,11 @@
 				press="onPressSplitList"> </StandardTile> </tiles> </TileContainer> -->
 
 		</content>
-		<footer>
+ 		<footer>
 			<Bar>
 				<contentRight>
 				</contentRight>
 			</Bar>
-		</footer>
+		</footer> 
 	</Page>
 </core:View>

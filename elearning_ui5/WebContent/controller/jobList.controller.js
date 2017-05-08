@@ -186,24 +186,8 @@ sap.ui.define(['elearning_ui5/src/js/layout/EmailBindingDialog', 'sap/ui/core/mv
             var emailBindingDialog = new EmailBindingDialog();
             //var requestBody = this._getFilterRequestBody();
             this.getView().setBusy(true);
-            // HCP DEMO DATA            
-            /*            $.ajax({
-                type: "GET",
-                dataType: 'json',
-                url: this.SERVICE_URL + "?$format=json",
-                contentType: "application/json",
-                success: function(json) {
-                	that.getView().setBusy(false);
-                    console.log("success...");
-                    var listModel = new sap.ui.model.json.JSONModel();
-                    listModel.setData(json.value);
-                    that.getView().setModel(listModel);
-                },
-                error: function(e) {
-                    console.log(e.message);
-                    that.getView().setBusy(false);
-                }
-            });*/
+            if(!this.getOwnerComponent().getModel("LearningHistory")){
+            	
             $.ajax({
                 type: "GET",
                 dataType: 'json',
@@ -229,6 +213,17 @@ sap.ui.define(['elearning_ui5/src/js/layout/EmailBindingDialog', 'sap/ui/core/mv
                     that.getView().setBusy(false);
                 }
             });
+        }else{
+        	this.getView().setBusy(false);
+            var oLearningHistory = this.getOwnerComponent().getModel("LearningHistory");
+            var oLearningModel = new sap.ui.model.json.JSONModel();
+            oLearningModel.setData(oLearningHistory);
+            this.getView().setModel(oLearningModel);
+            
+            var totalModel = new sap.ui.model.json.JSONModel();
+            totalModel.setData({total:oLearningHistory.length});
+            this.getView().setModel(totalModel,"HistoryTotal");
+        }
 
             /*            var cfg = {
             	url:"https://demoservicep1942455002trial.hanatrial.ondemand.com/DemoService/DemoService.svc/",	
@@ -247,7 +242,9 @@ sap.ui.define(['elearning_ui5/src/js/layout/EmailBindingDialog', 'sap/ui/core/mv
             }
 
         },
-
+        onBackPress:function(){
+        	this._router.navTo("appHome");
+        },
         showFilterDialog: function() {
             this.getView().byId("jobFacetFilter").openFilterDialog();
         },

@@ -38,7 +38,7 @@ elearning_ui5.src.js.ExtendFacetFilter.prototype._getSummaryText = function(){
 		}
 
 		if (!sFinalSummaryText) {
-			sFinalSummaryText = "NO_FILTER";
+			sFinalSummaryText = "";
 		}
 
 		return sFinalSummaryText;
