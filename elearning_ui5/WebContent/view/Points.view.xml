@@ -1,8 +1,7 @@
 <mvc:View controllerName="elearning_ui5.controller.Points"
 	xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:mvc="sap.ui.core.mvc"
 	xmlns:u="sap.ui.unified" xmlns="sap.m" xmlns:html="http://www.w3.org/1999/xhtml"
-	xmlns:my="elearning_ui5.src.js" xmlns:viz="sap.viz.ui5.controls"
-	xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds" xmlns:viz.data="sap.viz.ui5.data">
+	xmlns:my="elearning_ui5.src.js">
 	<html:style>
 		.jobInfoPage{
 		background:#f2f2f2;
@@ -54,17 +53,58 @@
 	<Page title="Points" id="PointsDetailPage" class="PointsInfoPage"
 		showNavButton="true" navButtonPress="onButtonPress">
 
-		<Panel id="PointsDetailInfo">
-		    <StandardListItem title="Course1" 
-		                      info="70">
-			</StandardListItem>
-			<StandardListItem title="Course2" info="80">
-			</StandardListItem>		
-			
-		</Panel>
-		<Toolbar height="3rem" >
-		<Title text="Points Average">
-		</Title>
+		<my:JSONList class="jobList" id="pointsList" noDataText="{wi18n>JOB_LIST_NO_DATA}"
+			items="{
+						path: '/'
+ 					}" totalCount="{/count}"
+			enableBusyIndicator="true" updateStarted="listUploadStart">
+			<my:headerToolbar>
+				<Toolbar>
+					<Title text="My Total Points is 40" level="H2" />
+					<ToolbarSpacer />
+				</Toolbar>
+			</my:headerToolbar>
+			<CustomListItem type="Navigation" press="onPressItem">
+				<content>
+					<VBox width="100%" height="5rem" class="sapUiSmallPaddingTop">
+						<FlexBox alignItems="Center" justifyContent="SpaceBetween"
+							class="sapUiSmallMarginTop">
+							<items>
+								<Label text="{Title}" class="sapUiSmallMarginBegin colorSetBlue"
+									width="100%" design="Bold" />
+								<Label text="{Course_type}" class="sapUiLargeMarginEnd"
+									width="100%" />
+							</items>
+						</FlexBox>
+						<FlexBox alignItems="Start" justifyContent="SpaceBetween"
+							class="sapUiTinyMarginTop">
+							<items>
+								<HBox justifyContent="Center" alignItems="Center">
+									<core:Icon src="sap-icon://map" class="iconSizeSmall sapUiSmallMarginBegin "
+										color="#009de0">
+									</core:Icon>
+									<Label text="{Course_id}" class="customSmallMarginLeft infoLabel"
+										width="100%" />
+								</HBox>
+								<HBox justifyContent="Center" alignItems="Center">
+									<core:Icon src="sap-icon://create-entry-time" class="iconSizeSmall sapUiSmallMarginBegin"
+										color="#009de0">
+									</core:Icon>
+									<Label text="{Score}" class="customSmallMarginLeft infoLabel"
+										width="100%" />
+								</HBox>
+							</items>
+						</FlexBox>
+					</VBox>
+				</content>
+			</CustomListItem>
+
+		</my:JSONList>
+
+
+		<Toolbar height="3rem">
+			<Title text="Points Average">
+			</Title>
 		</Toolbar>
 		<Panel class="PointsInfoPanel">
 			<Text text="75" class="sapUiSmallMarginTop">

@@ -35,6 +35,9 @@
 		var logonButton = new sap.ui.unified.ShellHeadItem({
 			icon : "sap-icon://log",
 			press : function() {
+				window.sessionStorage.removeItem("login_token");
+		        window.sessionStorage.removeItem("wechat_user");
+		        sap.ui.getCore().byId("mainShell").setHeaderVisible(false);
 				var oRouter = component.getRouter();
 				oRouter.navTo("logon", true);
 			}

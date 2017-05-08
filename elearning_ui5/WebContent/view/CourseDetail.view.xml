@@ -56,32 +56,32 @@
 
 		<Panel id="jobDetailInfo">
 		    <StandardListItem title="Item" 
-		                       info="{/courseInfo/componentTypeID} {/courseInfo/formattedRevisionDate} 
-		                             {/courseInfo/title} {/courseInfo/revisionNumber}">
+		                       info="{componentTypeID} {formattedRevisionDate} 
+		                             {title} {revisionNumber}">
 			</StandardListItem>
-			<StandardListItem title="Course" info="{/courseInfo/componentID}">
+			<StandardListItem title="Course" info="{componentID}">
 			</StandardListItem>
-			<StandardListItem title="Scheduled ID" info="{/courseInfo/scheduledID}">
+			<StandardListItem title="Scheduled ID" info="{scheduledID}">
 			</StandardListItem>
 			
-			<StandardListItem title="Instructor" info="{/courseInfo/instructorName}">
+			<StandardListItem title="Instructor" info="{instructorName}">
 			</StandardListItem>
-			<StandardListItem title="Complete Date"	info="{/courseInfo/formattedRevisionDate}">
+			<StandardListItem title="Complete Date"	info="{formattedRevisionDate}">
 			</StandardListItem>
 			<StandardListItem title="Complete Status" 
-			                   info="{/courseInfo/completionStatusID} ({/courseInfo/status})">
+			                   info="{completionStatusID} ({status})">
 			</StandardListItem>
-			<StandardListItem title="Total Hours" info="{/courseInfo/totalHours}">
+			<StandardListItem title="Total Hours" info="{totalHours}">
 			</StandardListItem>
-			<StandardListItem title="Contact Hours" info="{/courseInfo/contactHours}">
+			<StandardListItem title="Contact Hours" info="{contactHours}">
 			</StandardListItem>
-			<StandardListItem title="Credit Hours" info="{/courseInfo/creditHours}">
+			<StandardListItem title="Credit Hours" info="{creditHours}">
 			</StandardListItem>
-			<StandardListItem title="CPE Hours" info="{/courseInfo/cpeHours}">
+			<StandardListItem title="CPE Hours" info="{cpeHours}">
 			</StandardListItem>
-			<StandardListItem title="Grade" info="{/courseInfo/grade}">
+			<StandardListItem title="Grade" info="{grade}">
 			</StandardListItem>
-			<StandardListItem title="Course Type" info=" ">
+			<StandardListItem title="Course Type" info="{componentTypeID}">
 			</StandardListItem>			
 			
 		</Panel>

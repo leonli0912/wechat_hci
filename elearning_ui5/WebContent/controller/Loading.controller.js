@@ -2,6 +2,7 @@ sap.ui.define([ "elearning_ui5/src/js/format/CustomerFormat",'sap/ui/core/mvc/Co
 	return Controller.extend("elearning_ui5.controller.Loading", {
 		WECHAT_URL:"/clouldhr_server/WechatLogin",
 		oRouter:null,
+		oShell:null,
 		onInit : function() {
 			
 			this.oRouter = sap.ui.core.UIComponent.getRouterFor(this);
@@ -24,9 +25,10 @@ sap.ui.define([ "elearning_ui5/src/js/format/CustomerFormat",'sap/ui/core/mvc/Co
 	            
 	            success: function(json) {
 	            	that.getView().setBusy(false);
-	            	window.sessionStorage.setItem("login_token",json.access_token);
-	            	window.sessionStorage.setItem("user_info",json.wechat_user)
-	            	that.oRouter.navTo("appHome");
+	            	window.sessionStorage.setItem("login_token",json.access_token[0]);
+        			window.sessionStorage.setItem("wechat_user",JSON.stringify(json.wechat_user[0]));
+        			that.oShell.setHeaderVisible(true);
+        			that.oRouter.navTo("appHome");
 	            },
 	            error:function(e){
 	            	that.getView().setBusy(false);
@@ -46,7 +48,13 @@ sap.ui.define([ "elearning_ui5/src/js/format/CustomerFormat",'sap/ui/core/mvc/Co
 		  	      }
 		  	   }
 		  	   return theRequest;
-		  	}
+		 },
+		  	
+		onAfterRendering:function(){
+				this.oShell = sap.ui.getCore().byId("mainShell");
+				this.oShell.setHeaderVisible(false);
+			
+		}
 	});
 	
 

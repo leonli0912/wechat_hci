@@ -21,8 +21,13 @@
                 "transition": "slide"
             }, 
             "routes": [
+            	{
+			    	"pattern":"",
+			        "name":"loading",
+			        "target":"loading"
+			    },
                 {
-                    "pattern": "", 
+                    "pattern": "home", 
                     "name": "appHome", 
                     "target": "home"
                 },
@@ -42,7 +47,7 @@
                     "target": "logon"
                 }, 
                 {
-			        "pattern":"courseDetail/{courseId}",
+			        "pattern":"courseDetail/{componentTypeID},{componentID},{title},{formattedRevisionDate},{scheduledID},{instructorName},{status},{totalHours},{contactHours},{creditHours},{cpeHours},{grade},{completionStatusID}",
 			        "name":"courseDetail",
 			        "target":"courseDetail"
 			    },
@@ -55,12 +60,8 @@
 			    	"pattern":"points",
 			        "name":"points",
 			        "target":"points"
-			    },
-			    {
-			    	"pattern":"loading",
-			        "name":"loading",
-			        "target":"loading"
-			    }			    
+			    }
+		    
               
             ], 
             "targets": {

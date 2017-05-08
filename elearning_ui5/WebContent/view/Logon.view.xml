@@ -12,10 +12,6 @@
 		justify-content: center;
 		}
 
-		.login_box {
-		padding: 10% 37% 2rem 37%;
-		transition: padding 1s;
-		}
 	</html:style>
 	<Page class="myLoginPage" showHeader="false" enableScrolling="false">
 		<content>

@@ -1,5 +1,6 @@
 sap.ui.define(['elearning_ui5/src/js/layout/EmailBindingDialog', 'sap/ui/core/mvc/Controller', ], function(EmailBindingDialog, Controller) {
     // "use strict";
+	var eventBus = sap.ui.getCore().getEventBus();
     var jobList = Controller.extend("elearning_ui5.controller.jobList", {
         SERVICE_URL: "/hcpserver/Products",
         //TOKEN_URL:"/hcp_learning/oauth-api/rest/v1/token",
@@ -17,15 +18,144 @@ sap.ui.define(['elearning_ui5/src/js/layout/EmailBindingDialog', 'sap/ui/core/mv
             var rows = rowId.match(/\d+/g);
             var rowNo = rows[rows.length - 1];
             var courseInfo = oEvent.getSource().getBindingContext().getProperty();
-            //var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+            var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
             var eventBus = sap.ui.getCore().getEventBus();
             // 1. ChannelName, 2. EventName, 3. the data
             eventBus.publish("CourseDetailChannel", "onNavigateEvent", {
                 courseInfo
             });
-            this._router.navTo("courseDetail", {
-                courseId: courseInfo.componentID
-            });
+            var oItem, oCtx;
+			oItem = oEvent.getSource();
+			oCtx = oItem.getBindingContext();
+			var item = oCtx.getModel();
+			var json = item.getJSON();
+			var jsonstr = JSON.stringify(json);
+/*		    var jsontrans = { componentID : oCtx.getProperty("componentID"),
+		    		title:oCtx.getProperty("title"),
+		    		formattedRevisionDate:oCtx.getProperty("formattedRevisionDate"),
+		    		revisionNumber:oCtx.getProperty("revisionNumber"),
+		    		scheduledID:oCtx.getProperty("scheduledID"),
+		    		instructorName:oCtx.getProperty("instructorName"),
+		    		formattedRevisionDate:oCtx.getProperty("formattedRevisionDate"),
+		    		status:oCtx.getProperty("status"),
+		    		totalHours:oCtx.getProperty("totalHours"),
+		    		contactHours:oCtx.getProperty("contactHours"),
+		    		creditHours:oCtx.getProperty("creditHours"),
+		    		cpeHours:oCtx.getProperty("cpeHours"),
+		    		grade:oCtx.getProperty("grade")
+
+		    		};*/
+		      var componentID;// : oCtx.getProperty("componentID"),
+		      var title;
+		      var formattedRevisionDate;
+		      var revisionNumber;
+		      var scheduledID;
+		      var instructorName;
+		      var formattedRevisionDate;
+		      var status;
+		      var totalHours;
+		      var contactHours;
+		      var creditHours;
+		      var cpeHours;
+		      var grade;
+		      var componentTypeID;
+		      var completionStatusID;
+		      if (oCtx.getProperty("componentTypeID") == null){
+		    	  componentTypeID = "none";
+		      }else{
+		    	  componentTypeID = oCtx.getProperty("componentTypeID");
+		      };
+		      if (oCtx.getProperty("componentID") == null){
+		    	  componentID = "none";
+		      }else{
+		    	  componentID = oCtx.getProperty("componentID");
+		      };
+		      if (oCtx.getProperty("title") == null){
+		    	  title = "none";
+		      }else{
+		    	  title = oCtx.getProperty("title");
+		      };
+		      if (oCtx.getProperty("formattedRevisionDate") == null){
+		    	  formattedRevisionDate = "none";
+		      }else{
+		    	  var str = oCtx.getProperty("formattedRevisionDate");
+		    	  formattedRevisionDate = str.replace(/\//g, "-");
+		      };
+		      if (oCtx.getProperty("revisionNumber") == null){
+		    	  revisionNumber = "none";
+		      }else{
+		    	  revisionNumber = oCtx.getProperty("revisionNumber");
+		      };	
+		      if (oCtx.getProperty("scheduledID") == null){
+		    	  scheduledID = "none";
+		      }else{
+		    	  scheduledID = oCtx.getProperty("scheduledID");
+		      };	
+		      if (oCtx.getProperty("instructorName") == null){
+		    	  instructorName = "none";
+		      }else{
+		    	  instructorName = oCtx.getProperty("instructorName");
+		      };		      
+		      if (oCtx.getProperty("status") == null){
+		    	  status = "none";
+		      }else{
+		    	  status = oCtx.getProperty("status");
+		      };
+		      if (oCtx.getProperty("totalHours") == null){
+		    	  totalHours = "none";
+		      }else{
+		    	  totalHours = oCtx.getProperty("totalHours");
+		      };	
+		      if (oCtx.getProperty("contactHours") == null){
+		    	  contactHours = "none";
+		      }else{
+		    	  contactHours = oCtx.getProperty("contactHours");
+		      };
+		      if (oCtx.getProperty("creditHours") == null){
+		    	  creditHours = "none";
+		      }else{
+		    	  creditHours = oCtx.getProperty("creditHours");
+		      };
+		      if (oCtx.getProperty("cpeHours") == null){
+		    	  cpeHours = "none";
+		      }else{
+		    	  cpeHours = oCtx.getProperty("cpeHours");
+		      };
+		      if (oCtx.getProperty("grade") == null){
+		    	  grade = "none";
+		      }else{
+		    	  grade = oCtx.getProperty("grade");
+		      };			 
+		      if (oCtx.getProperty("completionStatusID") == null){
+		    	  completionStatusID = "none";
+		      }else{
+		    	  completionStatusID = oCtx.getProperty("completionStatusID");
+		      };
+		      
+
+			this._router.navTo("courseDetail",{
+				componentTypeID : componentTypeID,
+				//jsontrans//courseInfo.toString()
+				componentID :componentID,// oCtx.getProperty("componentID"),
+	    		title: title,//oCtx.getProperty("title"),
+	    		formattedRevisionDate:formattedRevisionDate,//oCtx.getProperty("formattedRevisionDate").toString,
+	    		revisionNumber: revisionNumber,//oCtx.getProperty("revisionNumber"),
+	    		scheduledID:scheduledID,//oCtx.getProperty("scheduledID"),
+	    		instructorName:instructorName,//oCtx.getProperty("instructorName"),
+	    		//formattedRevisionDate:formattedRevisionDate,//oCtx.getProperty("formattedRevisionDate"),
+	    		status:status,//oCtx.getProperty("status"),
+	    		totalHours:totalHours,//oCtx.getProperty("totalHours"),
+	    		contactHours:contactHours,//oCtx.getProperty("contactHours"),
+	    		creditHours:creditHours,//oCtx.getProperty("creditHours"),
+	    		cpeHours:cpeHours,//oCtx.getProperty("cpeHours"),
+	    		grade:grade,//oCtx.getProperty("grade")
+	    		completionStatusID:completionStatusID
+			//oCtx.getProperty("kid")
+			});
+            //this._router.navTo(("courseDetail")
+            //		, {
+            //    kid: courseInfo.kid
+            //});
         },
         /**
 										 * Called when a controller is
@@ -39,7 +169,12 @@ sap.ui.define(['elearning_ui5/src/js/layout/EmailBindingDialog', 'sap/ui/core/mv
 										 * @memberOf resume-collection-service.jobList
 										 */
         onInit: function() {
-            //this.sServiceUrl = "./hcpserver";
+            //this.sServiceUrl = "./hcpserver";s);
+        	
+            eventBus = sap.ui.getCore().getEventBus();
+            
+            //var courseInfo = oEvent.getSource().getBindingContext().getProperty();
+            eventBus.publish("CourseDetailChannel", "onNavigateEvent", { "123":"12" });
             var recommendModel = new sap.ui.model.json.JSONModel();
             var that = this;
            /* var token_json = sap.ui.getCore().getModel("sf_token");
@@ -72,10 +207,11 @@ sap.ui.define(['elearning_ui5/src/js/layout/EmailBindingDialog', 'sap/ui/core/mv
             $.ajax({
                 type: "GET",
                 dataType: 'json',
-                url: this.getOwnerComponent().HCP_HOST+this.LEARNING_URL,
+                url: "https://hrcservicep1941435989trial.hanatrial.ondemand.com/clouldhr_server/SFLearningHistory",
                 contentType: "application/json",
                 headers: {
-                    hrcloud_user_token: window.sessionStorage.getItem("login_token"),
+                    "hrcloud_user_token": window.sessionStorage.getItem("login_token"),
+                    //"Access-Control-Allow-Origin": "*"
                 },
 
                 success: function(json) {

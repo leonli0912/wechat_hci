@@ -5,7 +5,9 @@ sap.ui.controller("elearning_ui5.controller.Tile", {
     USERINFO_URL: "/clouldhr_server/UserInformation/Users",
     WECHAT_URL: "/clouldhr_server/WechatLogin",
     LEARNING_URL: "/clouldhr_server/SFLearningHistory",
-    //LEARNING_URL2: "https://hrcservicep1941435989trial.hanatrial.ondemand.com/clouldhr_server/SFLearningHistory",
+    ALLSCORE_URL:"/clouldhr_server/UserScoreInformation_All/User_score",
+    SCORE_URL:"/clouldhr_server/UserScoreInformation/User_score",
+    
     oSession_token: null ,
     oRouter: null ,
     onInit: function() {
@@ -26,7 +28,6 @@ sap.ui.controller("elearning_ui5.controller.Tile", {
         }
     
     },
-    
     
   	
     onBeforeRendering: function() {
@@ -52,6 +53,7 @@ sap.ui.controller("elearning_ui5.controller.Tile", {
     },
     onLogoffPress: function() {
         var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+        sap.ui.getCore().byId("mainShell").setHeaderVisible(false);
         oRouter.navTo("logon", {
             logout: true
         });
@@ -62,17 +64,22 @@ sap.ui.controller("elearning_ui5.controller.Tile", {
             userId: 'u01'
         });
     },
+    onPressNews:function(){
+    	window.open('https://www.sap.com/product/technology-platform/cloud-platform.html');
+    },
     
     handleLogoffPress: function(evt) {
-        var oUser = sap.ui.getCore().getModel("user");
+    /*    var oUser = sap.ui.getCore().getModel("user");
         oUser.login = false;
         sap.ui.getCore().setModel(oUser, "user");
-        /*
+        
 		 * var r = new sap.ui.getCore().byId("id_HomePage"); r.destroy();
-		 */
+		 
         location.reload(true);
+        window.sessionStorage.removeItem("login_token");
+        window.sessionStorage.removeItem("wechat_user");
         var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-        oRouter.navTo("login");
+        oRouter.navTo("login");*/
     },
     
     _onPatternMatched: function() {
@@ -82,7 +89,7 @@ sap.ui.controller("elearning_ui5.controller.Tile", {
             //GET COURSE TILE NUMBER
             if (!this.getOwnerComponent().getModel("LearningHistory")) {
                 var oCourseTileContent = this.byId("id_NumericCourse");
-                oCourseTileContent.setBusy(true);
+                //oCourseTileContent.setBusy(true);
                 $.ajax({
                     type: "GET",
                     dataType: '	json',
@@ -100,136 +107,71 @@ sap.ui.controller("elearning_ui5.controller.Tile", {
                         var log = e.message;
                     }
                 });
-            
             }
             
+          //GET RANKING TILE NUMBER
+            if (!this.getOwnerComponent().getModel("Ranking")) {
+                var oCourseTileContent = this.byId("id_NumericRanking");
+                //oCourseTileContent.setBusy(true);
+                $.ajax({
+                    type: "GET",
+                    dataType: '	json',
+                    url: this.getOwnerComponent().HCP_HOST+this.ALLSCORE_URL,
+                    contentType: "application/json",
+                    headers: {
+                        hrcloud_user_token: this.oSession_token
+                    },
+                    success: function(json) {
+                        that.byId("id_NumericRanking").setBusy(false);
+                        that.getOwnerComponent().setModel(json.value,"Ranking");
+                        json.value.forEach(function(item,index,array){
+                        	if(item.Wechat_nickname === JSON.parse(window.sessionStorage.getItem("wechat_user")).nickname){
+                        		that.byId("id_NumericRanking").setValue(index+1);
+                        	}
+                        });
+                    },
+                    error: function(e) {
+                        var log = e.message;
+                    }
+                });
+            } 
             
-            /*			if(!this.getOwnerComponent().getModel("userInfo")){
-			
-			//GET USER INFO
-			this.getView().setBusy(true);
-			
-			$.ajax({
-	            type: "GET",
-	            dataType: '	json',
-	            url: this.USERINFO_URL,
-	            contentType: "application/json",
-	            headers:{hrcloud_user_token:this.oSession_token},
-				success:function(json){
-					that.getView().setBusy(false);
-					
-					that.getOwnerComponent().setModel(json.value[0],"userInfo");
-				},
-				error:function(e){
-					//token expired
-					
-				}
-			});
-		}*/
-        
+            //GET POINTS TILE NUMBER
+            if (!this.getOwnerComponent().getModel("points")) {
+                var oCourseTileContent = this.byId("id_NumericPoints");
+                //oCourseTileContent.setBusy(true);
+                $.ajax({
+                    type: "GET",
+                    dataType: '	json',
+                    url: this.getOwnerComponent().HCP_HOST+this.SCORE_URL,
+                    contentType: "application/json",
+                    headers: {
+                        hrcloud_user_token: this.oSession_token
+                    },
+                    success: function(json) {
+                        that.byId("id_NumericPoints").setBusy(false);
+                        that.getOwnerComponent().setModel(json.value,"points");
+                        var point=0;
+                        json.value.forEach(function(item,index,array){
+                        	point = point + parseInt(item.Score);
+                        });
+                        that.byId("id_NumericPoints").setValue(point);
+                        
+                  
+                    },
+                    error: function(e) {
+                        var log = e.message;
+                    }
+                });
+            }            
+  
         }
-        /*var userModel = sap.ui.getCore().getModel("token");
-		
-		var that = this;
-		if(!userModel){
-			this.oRouter.navTo("logon");
-		}else{
-			// check token avoid ajax every time open this view
-			var oToken_model = sap.ui.getCore().getModel("token");
-			var sf_token = sap.ui.getCore().getModel("sf_token");
-			
-			if(!oToken_model){
-			// GET LGOIN TOKEN
-			this.getView().setBusy(true);
-			that = this;
-			$.ajax({
-	            type: "GET",
-	            dataType: 'text',
-	            url: this.TOKEN_URL,
-	            contentType: "application/json",
-//	            headers: {
-//	                "Authorization": "Basic amlheGluZzpjNjdmODBlODJlMWFkOGIzZjc0OGU1ODQ2YWQ5ODQ1Mzc2ZGU5NjU0ODNjNjM5NTAzMDZiMTAwYjdlMDhkMzFi",
-//	              },
-	            
-	            success: function(text) {
-	            	that.getView().setBusy(false);
-	            	that._oToken = text.access_token;
-	            	
-	            	sap.ui.getCore().setModel(text,"token");
-	                console.log("success...");
-	            },
-	            error: function(e) {
-	                    console.log(e.message);
-	                    that.getView().setBusy(false);
-	                }
-	            });	
-			};
-			
-			if(!sf_token){
-				// GET SF TOKEN
-				$.ajax({
-		            type: "GET",
-		            dataType: 'json',
-		            url: this.SFTOKEN_URL,
-		            contentType: "application/json",
-		            headers: {
-		                "hrcloud_user_token":oToken_model.token ,
-		              },		            
-		            success: function(json) {
-		            	that.getView().setBusy(false);
-		            	that._oToken = json.access_token;
-		            	sap.ui.getCore().setModel(json,"sf_token");
-		                console.log("success...");
-		            },
-		            error: function(e) {
-		                    console.log(e.message);
-		                    that.getView().setBusy(false);
-		                }
-		            });	
-			}*/
+    },
     
-    },
-    onPressCalendar: function(evt) {
-        
-        // Navigate to Calendar view (MasterNames1)
-        // TODO: this is to show list of events in version2. Now this is just
-        // throwing a 404 exception
-        // releaseManagement.util.Service.request("GET", "calendar", null,
-        // "onLoadCalendarSuccess", "onLoadCalendarFailure");
-        
-        // Read from local
-        // releaseManagement.util.Service.localRequest("calendar",
-        // "onLoadCalendarSuccess", "onLoadCalendarFailure");
-        // this.bus.publish("nav", "to", {
-        // destination : "wash"
-        // });
-        this.getRouter().navTo("calendar");
-    },
+
     onNavButtonPress: function(evt) {
         // this.bus.publish("nav", "back", null);
         this.getRouter().navBackTo(null , null , this.getView());
-    },
-    
-    onPressNominations: function(evt) {
-        
-        // Navigate to List of nominations (MasterNames)
-        releaseManagement.util.Service.request("GET", "user/me/nomination", 
-        null , "onLoadNominationsSuccess", "onLoadNominationsFailure");
-        // this.bus.publish("nav", "to", {
-        // destination : "master"
-        // });
-        this.getRouter().navTo("registrations");
-    },
-    onUploadCalPressed: function() {
-        this.getRouter().navTo("calendarUpload");
-    },
-    
-    oAddPressed: function(evt) {
-        // Navigate to DetailAdd.view
-        // this.bus.publish("nav", "to", {
-        // destination : "add"
-        // });
-        this.getRouter().navTo("create");
     },
     
     navToHandler: function(channelId, eventId, data) {
@@ -245,72 +187,11 @@ sap.ui.controller("elearning_ui5.controller.Tile", {
         // destination : "back"
         // });
         this.getRouter().navBackTo(null , null , this.getView());
-    },
-    
-    onAboutPressed: function() {
-        
-        var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-        oRouter.navTo("login");
-    },
-    
-    onPressProjects: function(evt) {
-        
-        // Navigate to List of projects (ProjectList)
-        
-        this.getRouter().navTo("project");
-    
-    },
-    oEditPressed: function() {
-    // var id = this.getView().getModel().getProperty("/id");
-    // // Navigate to DetailEdit.view
-    // this.bus.publish("nav", "to", {
-    // destination : "edit",
-    // id : id
-    // });
-    },
-    
-    onRMPressed: function() {
-    
-    },
-    
-    onLoadNameSuccess: function(channelId, eventId, data) {
-        var model = new sap.ui.model.json.JSONModel();
-        // if(location.host.search("localhost") != -1){
-        // model.setJSON(data.data);
-        // } else {
-        model.setData(data.data);
-        // }
-        
-        // Here we start to manipulate the data
-        this.data = data.data;
-        this.getView().setModel(model);
-    
-    },
-    
-    onLoadNameFailure: function(channelId, eventId, data) {
-    },
-    
-    ValidateData: function() {
-        var calculated_risk = this.data.risk * this.data.risk1;
-        var imageControl = this.getView().byId("ImageBox");
-        switch (calculated_risk) {
-        case 1:
-            imageControl.setSrc("img/Sunny.png");
-            return;
-        case 2:
-            imageControl.setSrc("img/Snow_Occasional.png");
-            return;
-        case 3:
-            imageControl.setSrc("img/Night_Rain.png");
-            return;
-        case 6:
-            imageControl.setSrc("img/Wind_Flag_Storm.png");
-            return;
-        case 9:
-            imageControl.setSrc("img/Hail_Heavy.png");
-            return;
-        }
-    
     }
+    
+ 
+
+
+ 
 
 });

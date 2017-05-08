@@ -81,7 +81,7 @@
 				type="Dimension" values="Store Name" /> </viz:feeds> </viz:VizFrame> -->
 			<my:JSONList id="RankingList" noDataText="{wi18n>JOB_LIST_NO_DATA}"
 				items="{
-						path: '/milk'
+						path: '/'
  					}" growing="true"
 				growingScrollToLoad="false" growingThreshold="10" totalCount="{/count}"
 				enableBusyIndicator="true" updateStarted="listUploadStart" updateFinished="onListUpdateFinished">
@@ -91,20 +91,23 @@
 						<ToolbarSpacer />
 					</Toolbar>
 				</my:headerToolbar>
-				<CustomListItem type="Navigation" press="onPressItem">
+				<CustomListItem type="Inactive" press="onPressItem">
 					<content>
 						<HBox>
-							<FlexBox class="sapMLIBContent">
+							<FlexBox class="sapMLIBContent myFlex"  >
 								<Label text="No.1" width="100%"
 									class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom rankingLabel" />
-								<core:Icon size="2rem" src="sap-icon://attachment-photo"
-									class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom" />
-								<Label text="{Store Name}" width="100%"
+<!-- 								<core:Icon size="6rem" src="{Wechat_img}"
+									class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom" /> -->
+								<Image id="wechat_img" src="{Wechat_img}" width="4rem"
+									class="wechat_img">
+								</Image>	
+								<Label text="{Wechat_nickname}" width="100%"
 									class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom rankingLabel" />
 							</FlexBox>
 							<FlexBox justifyContent="End">
 
-								<Label text="{Revenue}"
+								<Label text="{Score}"
 									class="sapUiSmallMarginTopBottom rankingLabel sapUiSmallMarginEnd" />
 
 
