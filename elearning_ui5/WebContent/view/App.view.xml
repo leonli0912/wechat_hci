@@ -1,7 +1,0 @@
-<mvc:View xmlns:mvc="sap.ui.core.mvc"
-	controllerName="elearning_ui5.controller.App"
-	xmlns:custom="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
-	 xmlns="sap.m">
-	 <App id="myApp">
-	</App>
-</mvc:View>
