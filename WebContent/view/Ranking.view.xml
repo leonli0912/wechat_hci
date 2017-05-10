@@ -46,26 +46,27 @@
 		}
 		.rankingLabel {
 		font-size: 2rem;
-		max-width: 9rem;
+		max-width:
+		9rem;
 		}
 		.score {
 		justifyContent:"End"
 		}
 	</html:style>
-	<Page title="{wi18n>JOB_LIST_PAGE_TITLE}" showHeader="false">
+	<Page title="{wi18n>JOB_LIST_PAGE_TITLE}"  showNavButton="true" navButtonPress="onButtonPress">
 
 		<content>
 			<my:ExtendFacetFilter id="jobFacetFilter" type="Light"
 				showPersonalization="false" showPopoverOKButton="true"
 				showSummaryBar="false" showReset="false" reset="handleFacetFilterReset"
-				class="jobFacetFilter" lists="{/filters}">
+				class="jobFacetFilter" lists="{/json_v}">
 				<my:lists>
-					<FacetFilterList title="{path:'title', formatter:'.translatWechatLabel'}"
-						key="{type}" multiselect="true" listClose="handleListClose"
-						items="{path:'values',templateShareable:false}">
+					<FacetFilterList title="Search" key="{nickname}"
+						multiselect="true" listClose="handleListClose"
+						items="{path:'json_v',templateShareable:false}">
 						<items>
 							<FacetFilterItem
-								text="{path:'label',formatter:'.translatWechatLabel'}" key="{key}" />
+								text="{path:'nickname',formatter:'.translatWechatLabel'}" key="{nickname}" />
 						</items>
 					</FacetFilterList>
 				</my:lists>
@@ -81,37 +82,46 @@
 				type="Dimension" values="Store Name" /> </viz:feeds> </viz:VizFrame> -->
 			<my:JSONList id="RankingList" noDataText="{wi18n>JOB_LIST_NO_DATA}"
 				items="{
-						path: '/'
+						path: '/value/'
  					}" growing="true"
 				growingScrollToLoad="false" growingThreshold="10" totalCount="{/count}"
-				enableBusyIndicator="true" updateStarted="listUploadStart" updateFinished="onListUpdateFinished">
+				enableBusyIndicator="true" updateStarted="listUploadStart"
+				updateFinished="onListUpdateFinished">
 				<my:headerToolbar>
 					<Toolbar>
-						<Title text="JOB_LIST_TITLE" level="H2" />
+						<Title text="My Ranking is " level="H1" />
+						<Title text="{/myranking}" class=" rank_title colorSetBlue" />
 						<ToolbarSpacer />
 					</Toolbar>
 				</my:headerToolbar>
 				<CustomListItem type="Inactive" press="onPressItem">
 					<content>
 						<HBox>
-							<FlexBox class="sapMLIBContent myFlex"  >
-								<Label text="No.1" width="100%"
-									class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom rankingLabel" />
-<!-- 								<core:Icon size="6rem" src="{Wechat_img}"
-									class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom" /> -->
-								<Image id="wechat_img" src="{Wechat_img}" width="4rem"
-									class="wechat_img">
-								</Image>	
-								<Label text="{Wechat_nickname}" width="100%"
-									class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom rankingLabel" />
+							<FlexBox class="sapMLIBContent myFlex">
+								<Label text="No.{num}   " width="100%" class="rank colorSetBlue" />
+								<!-- <core:Icon size="6rem" src="{Wechat_img}" class="sapUiSmallMarginBegin 
+									sapUiSmallMarginTopBottom" /> -->
+								<Label class="column2" />
+								<Image id="wechat_img" src="{Wechat_img}" width="2rem"
+									class="wechat_img rank_img">
+								</Image>
+								<Label text="{Wechat_nickname}" width="100%" class=" rank_2" />
 							</FlexBox>
+							<HBox justifyContent="Center" alignItems="Center">
+								<core:Icon src="sap-icon://goal" class="iconSizeSmall sapUiSmallMarginBegin"
+									color="#009de0">
+								</core:Icon>
+								<Label text="Score:" class="customSmallMarginLeft infoLabel"
+									width="100%" />
+							</HBox>
 							<FlexBox justifyContent="End">
 
 								<Label text="{Score}"
-									class="sapUiSmallMarginTopBottom rankingLabel sapUiSmallMarginEnd" />
+									class="sapMText sapMTextMaxWidth sapUiSelectable rank_2" />
 
 
 							</FlexBox>
+
 						</HBox>
 						<!-- <FlexBox alignItems="Start" justifyContent="SpaceBetween" class="sapUiTinyMarginTop"> 
 							<items> <HBox justifyContent="Center" alignItems="Center"> <core:Icon src="sap-icon://map" 

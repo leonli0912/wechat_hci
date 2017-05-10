@@ -65,7 +65,7 @@ sap.ui.controller("elearning_ui5.controller.Tile", {
         });
     },
     onPressNews:function(){
-    	window.open('https://www.sap.com/product/technology-platform/cloud-platform.html');
+    	//window.open('https://www.sap.com/product/technology-platform/cloud-platform.html');
     },
     
     handleLogoffPress: function(evt) {

@@ -51,7 +51,7 @@ sap.ui.define(["elearning_ui5/src/js/format/CustomerFormat", "sap/ui/core/mvc/Co
                 window.history.go(-1);
             } else {
                 var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-                oRouter.navTo("tile", {}, true);
+                oRouter.navTo("appHome", {}, true);
             }
         }
     });

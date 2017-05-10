@@ -46,16 +46,20 @@
     -moz-transition-property: left,right;
     z-index: 0;	
 }
-sapUiSmallMarginBegin sapUiSmallMarginTopBottom scoreVbox{
+.sapUiSmallMarginBegin.sapUiSmallMarginTopBottom scoreVbox{
 	width:14rem;
 }
-sapUiSmallMarginBegin sapUiSmallMarginTopBottom scoreIcon{
+.sapUiSmallMarginBegin.sapUiSmallMarginTopBottom scoreIcon{
 	position:fixed;
 	right:5rem;
 	
 }
-scoreText{
+.scoreText{
 	font-size:2rem;
     position:fixed;
 	right:2rem;
 }
+.rank{ overflow:hidden; padding-top:14px; padding-bottom:14px; color:#A9A9A9}
+.rank_2{ overflow:hidden; padding-top:14px; padding-bottom:14px; color:#000000; padding-left:10px;}
+.rank_img{ overflow:hidden; padding-bottom:6px; padding-left:10px;padding-top:6px;}
+.rank_title{ font-family:Helvetica;font-size:60px;}
