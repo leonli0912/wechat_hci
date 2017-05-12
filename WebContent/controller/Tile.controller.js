@@ -67,6 +67,10 @@ sap.ui.controller("elearning_ui5.controller.Tile", {
     onPressNews:function(){
     	//window.open('https://www.sap.com/product/technology-platform/cloud-platform.html');
     },
+    onPressAnalysis: function(evt) {
+        var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+        oRouter.navTo("analysis");
+    },
     
     handleLogoffPress: function(evt) {
     /*    var oUser = sap.ui.getCore().getModel("user");

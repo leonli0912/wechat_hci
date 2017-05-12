@@ -57,15 +57,25 @@
 					</TileContent>
 				</tileContent>
 			</GenericTile>
+
+			<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+				header="Analysis" subheader="View My Points" frameType="OneByOne"
+				press="onPressAnalysis">
+				<tileContent>
+					<TileContent footer="Points Finished">
+						<content>
+							
+						</content>
+					</TileContent>
+				</tileContent>
+			</GenericTile>
 			
 			<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
-				backgroundImage="./src/img/hrnews.jpg"
-				frameType="TwoByOne" press="onPressNews">
+				backgroundImage="./src/img/hrnews.jpg" frameType="TwoByOne" press="onPressNews">
 				<tileContent>
 					<TileContent footer="August 21, 2016">
 						<content>
-							<NewsContent
-								contentText="Welcome to Cloud HR"
+							<NewsContent contentText="Welcome to Cloud HR"
 								subheader="Powered by SCP">
 							</NewsContent>
 						</content>
@@ -87,11 +97,11 @@
 				press="onPressSplitList"> </StandardTile> </tiles> </TileContainer> -->
 
 		</content>
- 		<footer>
+		<footer>
 			<Bar>
 				<contentRight>
 				</contentRight>
 			</Bar>
-		</footer> 
+		</footer>
 	</Page>
 </core:View>

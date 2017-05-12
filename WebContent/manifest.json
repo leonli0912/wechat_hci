@@ -60,6 +60,11 @@
 			    	"pattern":"points",
 			        "name":"points",
 			        "target":"points"
+			    },
+			    {
+			    	"pattern":"analysis",
+			        "name":"analysis",
+			        "target":"analysis"
 			    }
 		    
               
@@ -97,8 +102,11 @@
                 "loading":{
                     "viewName": "Loading", 
                     "viewLevel": 1               
-                }
-              
+                },
+                "analysis":{
+                    "viewName": "Analysis", 
+                    "viewLevel": 1
+                }         
             }
         }
     }
