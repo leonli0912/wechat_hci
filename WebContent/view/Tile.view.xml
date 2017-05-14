@@ -59,12 +59,13 @@
 			</GenericTile>
 
 			<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
-				header="Analysis" subheader="View My Points" frameType="OneByOne"
+				header="Analysis" subheader="View the Analysis" frameType="OneByOne"
 				press="onPressAnalysis">
 				<tileContent>
-					<TileContent footer="Points Finished">
+					<TileContent footer="Smart Analysis">
 						<content>
-							
+							<NumericContent id="id_Analysis" value="1"
+								icon="sap-icon://area-chart" />
 						</content>
 					</TileContent>
 				</tileContent>
@@ -73,10 +74,10 @@
 			<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
 				backgroundImage="./src/img/hrnews.jpg" frameType="TwoByOne" press="onPressNews">
 				<tileContent>
-					<TileContent footer="August 21, 2016">
+					<TileContent footer="">
 						<content>
 							<NewsContent contentText="Welcome to Cloud HR"
-								subheader="Powered by SCP">
+								subheader="Powered by BOYS">
 							</NewsContent>
 						</content>
 					</TileContent>

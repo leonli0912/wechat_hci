@@ -76,7 +76,13 @@
 					<StandardListItem title="Phone"
 						 info= "{/Mobile}" />
 					<StandardListItem title="Email"
-						 info= "{/Sf_learning_user}" />
+						 info= "{/Email}" />
+					<StandardListItem title="Position"
+						 info= "{/Position}" />	
+						 					<StandardListItem title="Department"
+						 info= "{/Department}" />		
+						 					<StandardListItem title="Region"
+						 info= "{/Region}" />			 
 
 				</List>
 			</VBox>

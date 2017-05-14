@@ -22,28 +22,33 @@ sap.ui.define(["elearning_ui5/src/js/format/CustomerFormat",'sap/ui/core/mvc/Con
             	that.getView().setBusy(false);
             	 var listModel = new sap.ui.model.json.JSONModel();
             	 var json_v = json.value;
-            	 var num = 1;
+            	 var num = 0;
             	 var score_tmp;
             	 var my_ranking;
+            	 var my_photo;
             	 json.value.forEach(function(item,index,array){
                  	if(item.Wechat_nickname === JSON.parse(window.sessionStorage.getItem("wechat_user")).nickname){
                  		my_ranking = index+1;
+                 		my_photo = item.Wechat_img;
                  	}
                  });
-            	 my_ranking = {myranking:my_ranking};
+            	 my_ranking = {myranking:my_ranking,myphoto:my_photo};
+            	 //my_photo = {myphoto:my_photo};
                  for(var o in json_v){ 
-                	 json_v[o].num = num;
+                	 //json_v[o].num = num;
                 	 //json_v[o].myranking = my_ranking;
                      if(json_v[o].Score == score_tmp) {
                     	 
                      }else{
                     	 num = num + 1;
                      }
+                     json_v[o].num = num;
                      score_tmp = json_v[o].Score
                    }  
                  my_ranking.value = json_v;
                  
                  listModel.setData(my_ranking);
+                 //listModel.setData(my_photo);
                  that.getView().setModel(listModel);
             	
             },

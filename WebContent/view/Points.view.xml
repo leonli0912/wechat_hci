@@ -52,53 +52,78 @@
 	</html:style>
 	<Page title="Points" id="PointsDetailPage" class="PointsInfoPage"
 		showNavButton="true" navButtonPress="onButtonPress">
-
+			<my:ExtendFacetFilter id="jobFacetFilter" type="Light"
+				showPersonalization="false" showPopoverOKButton="true"
+				showSummaryBar="false" showReset="false" reset="handleFacetFilterReset"
+				class="jobFacetFilter" lists="{/json_v}">
+				<my:lists>
+					<FacetFilterList title="Search" key="{nickname}"
+						multiselect="true" listClose="handleListClose"
+						items="{path:'json_v',templateShareable:false}">
+						<items>
+							<FacetFilterItem
+								text="{path:'nickname'}" key="{nickname}" />
+						</items>
+					</FacetFilterList>
+				</my:lists>
+			</my:ExtendFacetFilter>
 		<my:JSONList id="pointsList" noDataText="{wi18n>JOB_LIST_NO_DATA}"
 			items="{
-						path: '/'
+						path: '/value/'
  					}" totalCount="{/count}"
 			enableBusyIndicator="true" updateStarted="listUploadStart">
 			<my:headerToolbar>
 				<Toolbar>
-					<Title text="My Total Points is 40" level="H2" />
+						<Image id="my_wechat_img" src="{/myphoto}" width="2.5rem"
+							class="wechat_img rank_img">
+						</Image>
+						<Title text="My Total Points are " level="H1" />
+						<Title text="{/totalpoint}" class=" rank_title colorSetBlue" />
 					<ToolbarSpacer />
 				</Toolbar>
 			</my:headerToolbar>
 			<CustomListItem type="Inactive" press="onPressItem">
 
-				<!-- <VBox width="100%" height="5rem" class="sapUiSmallPaddingTop"> <FlexBox 
-					alignItems="Center" justifyContent="SpaceBetween" class="sapUiSmallMarginTop"> 
-					<items> <Label text="{Title}" class="sapUiSmallMarginBegin colorSetBlue" 
-					width="100%" design="Bold" /> <Label text="{Course_type}" class="sapUiLargeMarginEnd" 
-					width="100%" /> </items> </FlexBox> <FlexBox alignItems="Start" justifyContent="SpaceBetween" 
-					class="sapUiTinyMarginTop"> <items> <HBox justifyContent="Center" alignItems="Center"> 
-					<core:Icon src="sap-icon://map" class="iconSizeSmall sapUiSmallMarginBegin 
-					" color="#009de0"> </core:Icon> <Label text="{Course_id}" class="customSmallMarginLeft 
-					infoLabel" width="100%" /> </HBox> <HBox justifyContent="Center" alignItems="Center"> 
-					<core:Icon src="sap-icon://create-entry-time" class="iconSizeSmall sapUiSmallMarginBegin" 
-					color="#009de0"> </core:Icon> <Label text="{Score}" class="customSmallMarginLeft 
-					infoLabel" width="100%" /> </HBox> </items> </FlexBox> </VBox> -->
-				<HBox width="100%" height="5rem" class="sapUiSmallPaddingTop">
-					<core:Icon size="2rem" src="sap-icon://education"
-						class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom" />
-					<VBox class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom scoreVbox">
-						<Label text="{Title}" />
-						<Label text="{Course_type}" />
-					</VBox>
-					<core:Icon size="2rem" src="sap-icon://badge"
-						class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom scoreIcon" />
-					<Text text="{Score}" class="scoreText"></Text>
-				</HBox>
-				<!-- <HBox> <FlexBox alignItems="Center" justifyContent="SpaceBetween" 
-					class="sapUiSmallMarginTop"> <items> <VBox justifyContent="Center" alignItems="Center"> 
-					<Label text="{Title}" class="sapUiSmallMarginBegin colorSetBlue" width="100%" 
-					design="Bold" /> </VBox> <VBox justifyContent="Center" alignItems="Center"> 
-					<Label text="{Course_type}" class="sapUiLargeMarginEnd" width="100%" /> </VBox> 
-					</items> </FlexBox> <FlexBox alignItems="End" justifyContent="SpaceBetween" 
-					class="sapUiSmallMarginTop"> <items> <HBox> <core:Icon src="sap-icon://create-entry-time" 
-					class="iconSizeSmall sapUiSmallMarginBegin" color="#009de0"> </core:Icon> 
-					</HBox> <HBox> <Label text="{Score}" class="customSmallMarginLeft infoLabel" 
-					width="100%" /> </HBox> </items> </FlexBox> </HBox> -->
+<content>
+						<HBox>
+							<FlexBox class="sapMLIBContent myFlex">
+								
+								<core:Icon size="2rem" src="sap-icon://education"
+class="iconSizeSmall sapUiSmallMarginBegin" color="#009de0"/>
+					
+								<Label text="{Title}" width="145pt" class="rank_2" font-size="2px" />
+
+									
+							</FlexBox>
+							<HBox justifyContent="Center" alignItems="Center" >
+							    <Label text="V{Course_version}" class=" infoLabel"
+									width="100%" />					
+								<core:Icon src="sap-icon://goal" class="iconSizeSmall sapUiSmallMarginBegin"
+									color="#009de0">
+								</core:Icon>
+								<Label text="Score:" class="customSmallMarginLeft infoLabel"
+									width="100%" />
+							</HBox>
+							<FlexBox justifyContent="End">
+
+								<Label text="{Score}"
+									class=" sapMText sapMTextMaxWidth sapUiSelectable rank_2" />
+
+
+							</FlexBox>
+
+						</HBox>
+						<!-- <FlexBox alignItems="Start" justifyContent="SpaceBetween" class="sapUiTinyMarginTop"> 
+							<items> <HBox justifyContent="Center" alignItems="Center"> <core:Icon src="sap-icon://map" 
+							class="iconSizeSmall sapUiSmallMarginBegin " color="#009de0"> </core:Icon> 
+							<Label text="{componentID}" class="customSmallMarginLeft infoLabel" width="100%" 
+							/> </HBox> <HBox justifyContent="Center" alignItems="Center"> <core:Icon 
+							src="sap-icon://create-entry-time" class="iconSizeSmall sapUiSmallMarginBegin" 
+							color="#009de0"> </core:Icon> <Label text="{path:'formattedRevisionDate',formatter:'.dateFormat'}" 
+							class="customSmallMarginLeft infoLabel" width="100%" /> </HBox> </items> 
+							</FlexBox> -->
+
+</content>
 
 			</CustomListItem>
 

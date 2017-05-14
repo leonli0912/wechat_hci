@@ -85,13 +85,5 @@
 			</StandardListItem>			
 			
 		</Panel>
-		<Toolbar height="3rem" >
-		<Title text="Course Description">
-		</Title>
-		</Toolbar>
-		<Panel class="jobInfoPanel">
-			<Text text="test test test" class="sapUiSmallMarginTop">
-			</Text>
-		</Panel>
 	</Page>
 </mvc:View>

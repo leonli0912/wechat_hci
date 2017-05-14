@@ -415,7 +415,7 @@ sap.ui.define(['elearning_ui5/src/js/layout/EmailBindingDialog', 'sap/ui/core/mv
                 }
             }
 
-            var inputFilterValue = this.getView().byId("searchField").getValue();
+            var inputFilterValue = "";//this.getView().byId("searchField").getValue();
             inputFilterValue = encodeURI(inputFilterValue);
             var requstBody = {
                 companyId: "",

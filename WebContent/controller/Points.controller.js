@@ -6,7 +6,7 @@ sap.ui.define(["elearning_ui5/src/js/format/CustomerFormat", "sap/ui/core/mvc/Co
         	this.oRouter = sap.ui.core.UIComponent.getRouterFor(this);
         	this.getView().setBusy(true);
 			var that = this;
-			if(!this.getOwnerComponent().getModel("points")){
+			//if(!this.getOwnerComponent().getModel("points")){
 				
 			$.ajax({
 	            type: "GET",
@@ -22,8 +22,17 @@ sap.ui.define(["elearning_ui5/src/js/format/CustomerFormat", "sap/ui/core/mvc/Co
 	            
 	            success: function(json) {
 	            	that.getView().setBusy(false);
+	            	var json_v = json.value;
+	            	var total_point = 0;
+	            	var wechat_user = JSON.parse(window.sessionStorage.getItem("wechat_user"));
+	                 for(var o in json_v){ 
+	                	 total_point = Number(json_v[o].Score) + total_point;
+	                   }  
+	                 var mypoint = {totalpoint: total_point, myphoto: wechat_user.headimgurl};
+	                 
 	            	 var listModel = new sap.ui.model.json.JSONModel();
-	                 listModel.setData(json.value);
+	            	 mypoint.value = json_v;
+	                 listModel.setData(mypoint);
 	                 that.getView().setModel(listModel);
 	            	
 	            },
@@ -32,13 +41,13 @@ sap.ui.define(["elearning_ui5/src/js/format/CustomerFormat", "sap/ui/core/mvc/Co
 	            	that.oRouter.navTo("logon");
 	            	}
 	            });
-			}else{
-				this.getView().setBusy(false);
-	            var oPoints = this.getOwnerComponent().getModel("points");
-	            var oPointsModel = new sap.ui.model.json.JSONModel();
-	            oPointsModel.setData(oPoints);
-	            this.getView().setModel(oPointsModel);
-			}
+			//}else{
+				//this.getView().setBusy(false);
+	            //var oPoints = this.getOwnerComponent().getModel("points");
+	            //var oPointsModel = new sap.ui.model.json.JSONModel();
+	            //oPointsModel.setData(oPoints);
+	            //this.getView().setModel(oPointsModel);
+			//}
         },
         onDataReceived: function(sChannel, sEvent, oData) {
 

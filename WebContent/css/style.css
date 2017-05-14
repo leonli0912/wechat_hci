@@ -60,6 +60,7 @@
 	right:2rem;
 }
 .rank{ overflow:hidden; padding-top:14px; padding-bottom:14px; color:#A9A9A9}
+.point{ overflow:hidden; padding-top:14px; padding-bottom:14px; color:#000000; padding-left:10px; font-size:2rem; position:relative;left:20px;float:right }
 .rank_2{ overflow:hidden; padding-top:14px; padding-bottom:14px; color:#000000; padding-left:10px;}
 .rank_img{ overflow:hidden; padding-bottom:6px; padding-left:10px;padding-top:6px;}
 .rank_title{ font-family:Helvetica;font-size:60px;}

@@ -53,7 +53,8 @@
 		justifyContent:"End"
 		}
 	</html:style>
-	<Page title="{wi18n>JOB_LIST_PAGE_TITLE}"  showNavButton="true" navButtonPress="onButtonPress">
+	<Page title="{wi18n>JOB_LIST_PAGE_TITLE}" showNavButton="true"
+		navButtonPress="onButtonPress">
 
 		<content>
 			<my:ExtendFacetFilter id="jobFacetFilter" type="Light"
@@ -66,7 +67,7 @@
 						items="{path:'json_v',templateShareable:false}">
 						<items>
 							<FacetFilterItem
-								text="{path:'nickname',formatter:'.translatWechatLabel'}" key="{nickname}" />
+								text="{path:'nickname'}" key="{nickname}" />
 						</items>
 					</FacetFilterList>
 				</my:lists>
@@ -89,6 +90,9 @@
 				updateFinished="onListUpdateFinished">
 				<my:headerToolbar>
 					<Toolbar>
+						<Image id="my_wechat_img" src="{/myphoto}" width="2.5rem"
+							class="wechat_img rank_img">
+						</Image>
 						<Title text="My Ranking is " level="H1" />
 						<Title text="{/myranking}" class=" rank_title colorSetBlue" />
 						<ToolbarSpacer />
@@ -117,7 +121,7 @@
 							<FlexBox justifyContent="End">
 
 								<Label text="{Score}"
-									class="sapMText sapMTextMaxWidth sapUiSelectable rank_2" />
+									class=" sapMText sapMTextMaxWidth sapUiSelectable rank_2" />
 
 
 							</FlexBox>
