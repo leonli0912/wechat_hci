@@ -14,7 +14,7 @@ sap.ui.define(["elearning_ui5/src/js/format/CustomerFormat", "sap/ui/core/mvc/Co
             
             var oPopOver = this.getView().byId("idPopOver");
             oPopOver.connect(oVizFrame.getVizUid());
-            oPopOver.setFormatString("__UI5__FloatMaxFraction2");
+            //oPopOver.setFormatString("__UI5__FloatMaxFraction2");
 			var that = this;
 			//if(!this.getOwnerComponent().getModel("points")){
 				
