@@ -26,6 +26,7 @@
 }
 .sapMLIBContent.myFlex{
 	align-items: flex-end;
+	max-width: 95%;
 }
 .tileLayout {
 	float: left;
