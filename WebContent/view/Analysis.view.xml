@@ -6,7 +6,7 @@
 	<html:style>
 
 	</html:style>
-	<Page title="{wi18n>JOB_LIST_PAGE_TITLE}" showNavButton="true"
+	<Page title="Ranking Distribution" showNavButton="true"
 		navButtonPress="onButtonPress">
 
 		<content>
